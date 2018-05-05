@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+FILE="Tests"
+
+# clean
+rm *.class
+rm com/allfre2//musicruler/*.class
+rm com/allfre2/musicruler/utilities/*.class
+if [ "$1" = "clean" ]; then
+ exit 0
+fi
+
+#build
+time javac $FILE".java"
+
+if [ "$1" = "run" ]; then
+
+ java $FILE
+
+fi
