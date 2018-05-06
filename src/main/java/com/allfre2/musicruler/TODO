@@ -37,7 +37,6 @@ General
  Create an android app
  Create a SpringMVC web app that serves some service using the library
   use angular ...
- Create a Key class
  Create a ProgressionGenerator interface
   In every ProgressionGenerator there will be a generator that uses the Key's adj list of chords
   ( The criteria by which the adj List of Chords whithin a key is generated should be able
@@ -50,3 +49,19 @@ General
  fix the overtone things.
 
 ====
+
+ Create a Key class. A key is based on a scale... major, dorian, phrygian, lydian, mixolydian, aeolian(3)
+  or locrian.
+ The Key should give all the posible chords for that tonality.
+ It should classify every chord in a function ... , must account for modulations or secondary dominants
+ (optional) should build a graph of chord relations and provide an API to access and use it.
+
+ Create a Harmonizer interface
+  The idea is to include a parser for simple context-free grammar where the alphabet are the chords
+   and it includes classifications for chords according to function.
+   Given this parser we can give the classes that implement the interface a definition of ...
+   for example a language for harmonizing songs. Later we can use this language to create valid
+   strings (of chords) for that language. 
+
+  Create a Markov Chain (genetic algorithm, neural net) poem generator and use a Harmonizer to add music
+   to it, thus creating a song
