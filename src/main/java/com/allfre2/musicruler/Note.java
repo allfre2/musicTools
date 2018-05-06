@@ -63,42 +63,42 @@ public class Note implements NoteI{
   int dist = distance(note.getNoteIndex());
   dist = dist < 0 ? dist + 12 : dist;
   dist += -2 + note.getAltIndex();
-  return dist;
+  return dist % 12;
  }
 
  public boolean isEnharmonic(NoteI note){
   int semitones = semitones(note);
-  if(semitones == 12 || semitones == 0)
-    return true;
-  return false;
+  return semitones == 0;
  }
 
+ // Add augmented, minor, and diminished 1ths ... :/
  public NoteI aug(int interval){
   interval = (interval < 1 ? 1 : interval);
-  int distance = semitones[ (interval -1)%Notes.length ] - semitones[0] + 1;
+  int distance = semitones[ (interval -1)%Notes.length ] + 1;
   return makeNote(interval, distance);
  }
 
  public NoteI major(int interval){
   interval = (interval < 1 ? 1 : interval);
-  int distance = semitones[ (interval -1)%Notes.length ] - semitones[0];
+  int distance = semitones[ (interval -1)%Notes.length ];
   return makeNote(interval, distance);
  }
 
  public NoteI minor(int interval){
   int i = interval %8;
-  if(i < 1 || i == 4 || i == 5)
+  if(i < 2 || i == 4 || i == 5)
    return just(interval);
-  int distance = semitones[ (interval -1)%Notes.length ] - semitones[0]
+  int distance = semitones[ (interval -1)%Notes.length ]
    - 1; // minor
+   distance = (distance + 12) % 12;
   return makeNote(interval, distance);
  }
 
  public NoteI dim(int interval){
   interval = (interval < 1 ? 1 : interval);
-  int distance = semitones[ (interval -1)%Notes.length ] - semitones[0] -2;
+  int distance = semitones[ (interval -1)%Notes.length ] -2;
    int i = interval %8;
-   if(i < 1 || i == 4 || i == 5)
+   if(i < 2 || i == 4 || i == 5)
     distance += 1;
   return makeNote(interval, distance);
  }

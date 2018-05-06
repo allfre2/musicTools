@@ -1,5 +1,6 @@
 Note.java
     - Exposing the integer values inside the class of the indexes breaks encapsulation (Redesign)
+    - Refactor !!!
 
 Chord.java
 	- Rewrite the chord method to preserver the order when the new list of overtones
@@ -24,9 +25,10 @@ General
 	- Create a Chord class for unidentified chords and Scales
 
 ====
- Create a maven projetc structure and modify the package signatures
- Create unit tests
- Create a jar or other way to distribute the library
+ Create a maven projetc structure and modify the package signatures ... done
+ Create unit tests ...
+ Create a jar or other way to distribute the library ... done
+ Create a github repository ... done
  Create a JavaFx interface
  Create an android app
  Create a SpringMVC web app that serves some service using the library
@@ -42,3 +44,9 @@ General
   and according to a customized criteria it will generate chord progressions from a starting chord
   to an end chord, or maybe fill in the blanks in a progression that is half way finished.
  fix the overtone things.
+
+====
+ Interesting ideas:
+    - Write annotations to create automatic unit tests
+       example: @UnitTest(input = "Some input", output = Object(2, 5))
+        ... something of sorts

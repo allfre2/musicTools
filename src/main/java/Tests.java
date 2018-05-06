@@ -8,15 +8,15 @@ import java.util.stream.Collectors;
 public class Tests{
 
  public static void main(String[] args){
-  // NoteTest();
-  // ScaleTest();
-  // ChordTest();
-  // semitoneTest();
-  // ScaleDegreeTest(0);
-  // ScaleDegreeTest(7);
-  // KeyTest();
+  NoteTest();
+  ScaleTest();
+  ChordTest();
+  semitoneTest();
+  ScaleDegreeTest(0);
+  ScaleDegreeTest(7);
+  KeyTest();
   ProgressionTest(); // FAIL
-  // ChordFunctionAnalysis();
+  ChordFunctionAnalysis();
  }
 
  public static void NoteTest(){

@@ -27,7 +27,7 @@ public class Symbols{
         {"b",  flat},    // flat        , -1
         {"=",  natural},    // natural     ,  0
         {"#",  sharp},    // sharp       ,  1
-        {"##", doubleSharp},   // double sharp,  2
+        {"x", doubleSharp},   // double sharp,  2
      {"?","?"}     // Error, need triple sharp?! or triple flat?!
     };
 
