@@ -88,8 +88,7 @@ public class Note implements NoteI{
   int i = interval %8;
   if(i < 2 || i == 4 || i == 5)
    return just(interval);
-  int distance = semitones[ (interval -1)%Notes.length ]
-   - 1; // minor
+  int distance = semitones[ (interval -1)%Notes.length ] - 1;
    distance = (distance + 12) % 12;
   return makeNote(interval, distance);
  }
@@ -150,7 +149,7 @@ public class Note implements NoteI{
 
  private String getAlt(int interval, int semitones){
    int dist = distance( intervalIndex(interval) );
-   int alt = 2 - dist + semitones; // FIX!
+   int alt = 2 - dist + semitones;
    alt = (alt < 0 || alt > 4) ? 5 : alt;
    return Symbols.modifiers[ alt ][ useUnicode ? 1 : 0 ];
  }

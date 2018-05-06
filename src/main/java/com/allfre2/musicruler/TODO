@@ -26,9 +26,13 @@ General
 
 ====
  Create a maven projetc structure and modify the package signatures ... done
- Create unit tests ...
  Create a jar or other way to distribute the library ... done
  Create a github repository ... done
+ Create unit tests ... 
+  Note ... done
+  NoteCollection
+  Scale
+  Chord
  Create a JavaFx interface
  Create an android app
  Create a SpringMVC web app that serves some service using the library
@@ -46,7 +50,3 @@ General
  fix the overtone things.
 
 ====
- Interesting ideas:
-    - Write annotations to create automatic unit tests
-       example: @UnitTest(input = "Some input", output = Object(2, 5))
-        ... something of sorts

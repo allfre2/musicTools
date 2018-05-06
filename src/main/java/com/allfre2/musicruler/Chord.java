@@ -6,7 +6,7 @@ import java.util.HashSet;
 
 public abstract class Chord extends NoteCollection{
 
- //TODO
+ //TODO: Keep order
  public List<NoteI> Overtones(){
  	HashSet<NoteI> overtones = new HashSet<>();
  	for (NoteI note: notes) {
@@ -39,12 +39,8 @@ public abstract class Chord extends NoteCollection{
  	  + 
  	  (NoteCollectionFactory.isMinor(this) ? roman.toLowerCase() : roman)
  	  +
- 	  (
- 	  	this.getClass() == Minor.class ? 
-        ""
-       :
- 	    NoteCollectionFactory.getSymbol(this)
- 	  );
+ 	  (this.getClass() == Minor.class ? "" : NoteCollectionFactory.getSymbol(this));
+ 	  
  	return nameStr;
  }
 }

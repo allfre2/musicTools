@@ -25,11 +25,11 @@ public abstract class Scale extends NoteCollection{
  private List<NoteI> triads(int deg){
     return new ArrayList<NoteI>
 	  (Arrays.asList(
-       new NoteI[]{
+     new NoteI[]{
 	    degree(deg),
 	    degree(deg+2),
 	    degree(deg+4)
-    }));
+     }));
  }
 
  public Chord chord(int deg){

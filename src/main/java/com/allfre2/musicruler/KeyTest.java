@@ -39,7 +39,6 @@ public class KeyTest{
           }
          }
         }
-
         generateAjdChords();
     }
 
@@ -98,7 +97,6 @@ public class KeyTest{
      for (Chord chord: allChords) {
        System.out.println("Chord #" + (++i) + ": " + chord + "(" + chord.name(this.rootScale) + ")");
        System.out.println(chordListToString(getAdjChordsTo(chord)));
-       //musicruler.utilities.io.input();
        com.allfre2.musicruler.utilities.io.input();
      }
     }

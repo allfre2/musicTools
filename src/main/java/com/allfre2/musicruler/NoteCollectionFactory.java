@@ -66,6 +66,8 @@ public class NoteCollectionFactory{
         Notation.put(Aug7.class, Symbols.augmented7);
         Notation.put(Sus4.class, Symbols.sus4);
         Notation.put(Sus2.class, Symbols.sus2);
+
+        Notation.put(NoteCollection.class, " Generic Note Collection");
     }
 
     public static List<Class> getScaleList(){
