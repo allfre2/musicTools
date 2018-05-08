@@ -1,7 +1,8 @@
 package com.allfre2.musicruler;
 
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.Random;
+import java.util.List;
+import java.util.ArrayList;
 
 import org.junit.Assert;
 
@@ -14,15 +15,16 @@ import org.junit.runners.Parameterized.Parameter;
 @RunWith(Parameterized.class)
 public class ScaleTest{
     
+    private final static int maxTests = 30;
+
     @Parameters
-    public static Collection<String> testCases(){
-     // Expected, actual pairs
-     String[] tests = {
-     	"C", "Dbb", "F", "E#", "F#", "Gb", "A#", "Bb",
-     	"C#", "Db", "G#", "Ab", "Cb", "B", "Fx", "G",
-     	"D", "Ebb", "D#", "Eb"
-     }; 
-     return Arrays.asList(tests);
+    public static List<String> testCases(){
+     Random rnd = new Random();
+     List<String> tests = new ArrayList<>();
+     for(int i = 0; i < rnd.nextInt(maxTests)+10; ++i){
+      tests.add(Note.random().toString());
+     }
+     return tests;
     }
 
     @Parameter(0)
@@ -35,7 +37,7 @@ public class ScaleTest{
       Assert.assertTrue(scale.equals(NoteCollectionFactory.makeScale(scale.getClass(),note)));
      }
     }
-
+ 
     @Test
     public void hashCodeTest(){
      NoteI note = new Note(arg);
