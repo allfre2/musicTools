@@ -42,7 +42,7 @@ public class Tests{
        for (int i =1; i < 8; ++i) {
             System.out.print(note.dim(i) + " ");
        }
-     if( !io.input().isEmpty() ) System.exit(0);
+     if( !io.input().isEmpty() ) return;
     }
  }
 
@@ -63,7 +63,7 @@ public class Tests{
         e.printStackTrace();
       }
      }
-     if( !io.input().isEmpty() ) System.exit(0);
+     if( !io.input().isEmpty() ) return;
     }
  }
 
@@ -86,7 +86,7 @@ public class Tests{
         e.printStackTrace();
       }
     }
-     if( !io.input().isEmpty() ) System.exit(0);
+     if( !io.input().isEmpty() ) return;
   }
  }
 
@@ -120,7 +120,7 @@ public class Tests{
         System.out.println(names);
         System.out.println(degrees);
         System.out.println("=====");
-        if( !io.input().isEmpty() ) System.exit(0);
+        if( !io.input().isEmpty() ) return;
       }catch(Exception e){
         e.printStackTrace();
       }
@@ -148,9 +148,31 @@ public class Tests{
   }
   System.out.println(deg.size() + " triads available");
   System.out.println(deg);
-  System.out.println()
+  System.out.println();
+  System.out.println("Tonic Chords: " +
+  k.getTonicChords()
+   .stream()
+   .map(c -> c.name(k.getRootScale()))
+   .collect(Collectors.toList()) + "\n");
 
-  ;
+  System.out.println("SubDominant Chords: " +
+  k.getSubDominantChords()
+   .stream()
+   .map(c -> c.name(k.getRootScale()))
+   .collect(Collectors.toList()) + "\n");
+
+  System.out.println("Dominant Chords: " +
+  k.getDominantChords()
+   .stream()
+   .map(c -> c.name(k.getRootScale()))
+   .collect(Collectors.toList()) + "\n");
+
+  int x = 5;
+
+  System.out.println(x + " Random verses: ");
+  for(int i = 0; i < x; ++i){
+    System.out.println(k.getVerse().stream().map(c->c.name(k.getRootScale())).collect(Collectors.toList()));
+  }
   System.out.println(deg7.size() + " 7th chords available");
   System.out.println(deg7);
   System.out.println("=============");
@@ -196,7 +218,7 @@ public class Tests{
                .map(chord -> chord.name())
                .collect(Collectors.toList());
     System.out.println(p);
-    if( !io.input().isEmpty() ) System.exit(0);
+    if( !io.input().isEmpty() ) return;
   }
  }
 
@@ -216,7 +238,7 @@ public class Tests{
      System.out.println("Common notes with I: " + chord.commonNotes(modes.get(0).chord(1)));
      System.out.println("--------------------------");  
     }
-    if( !io.input().isEmpty() ) System.exit(0);
+    if( !io.input().isEmpty() ) return;
    }
   }
 }

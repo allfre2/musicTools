@@ -15,6 +15,11 @@ public class KeyTest{
     protected final List<Chord> chords;   // 25
     protected final List<Chord> chords7;  // 31
     protected final List<Chord> allChords;// 56
+
+    protected final List<Chord> tonicChords;
+    protected final List<Chord> subDominantChords;
+    protected final List<Chord> dominantChords;
+
     protected HashMap<Chord, TreeSet<Chord>> adjChords;
     protected Comparator<Chord> comparator;
 
@@ -24,22 +29,43 @@ public class KeyTest{
         this.chords = new ArrayList<>();
         this.chords7 = new ArrayList<>();
         this.allChords = new ArrayList<>();
+        this.tonicChords = new ArrayList<>();
+        this.subDominantChords = new ArrayList<>();
+        this.dominantChords = new ArrayList<>();
+
         List<Scale> modes = NoteCollectionFactory.getAllModes(this.root);
         for (Scale scale: modes) {
          for (Chord c: scale.chords()) {
           if( !chords.contains(c) ){
             chords.add(c);
             allChords.add(c);
+            registerFunctions(c);
           }
          }
+
          for (Chord c: scale.chords(7)) {
           if( !chords7.contains(c) ){
             chords7.add(c);
             allChords.add(c);
+            registerFunctions(c);
           }
          }
         }
         generateAjdChords();
+    }
+
+    private void registerFunctions(Chord chord){
+      if(chord.commonNotes(rootScale.chord(1)) > 1){
+        tonicChords.add(chord);
+      }
+
+      if(chord.commonNotes(rootScale.chord(5)) > 1){
+        dominantChords.add(chord);
+      }
+
+      if(chord.commonNotes(rootScale.chord(4)) > 1){
+        subDominantChords.add(chord);
+      }
     }
 
     public final NoteI getRoot(){
@@ -60,6 +86,48 @@ public class KeyTest{
 
     public final List<Chord> getAllChords(){
      return allChords;
+    }
+
+    public final List<Chord> getTonicChords(){
+      return tonicChords;
+    }
+
+    public final List<Chord> getSubDominantChords(){
+      return subDominantChords;
+    }
+
+    public final List<Chord> getDominantChords(){
+      return dominantChords;
+    }
+
+    public Chord getRandChord(int function, int n){
+      Chord chord;
+      List<Chord> chords;
+      java.util.Random rnd = new java.util.Random();
+
+      switch(function){
+        case 4:
+         chords = getSubDominantChords();
+         chord = chords.get(rnd.nextInt(chords.size()));
+        break;
+
+        case 5:
+         chords = getDominantChords();
+         chord = chords.get(rnd.nextInt(chords.size()));
+        break;
+        default:
+         chords = getTonicChords();
+         chord = chords.get(rnd.nextInt(chords.size()));
+      }
+      return chord;
+    }
+
+    public List<Chord> getVerse(){
+      List<Chord> verse = new ArrayList<>();
+      verse.add(getRandChord(1, 2));
+      verse.add(getRandChord(4, 2));
+      verse.add(getRandChord(5, 2));
+      return verse;
     }
 
     private Comparator<Chord> createComparator(Chord keyChord){
