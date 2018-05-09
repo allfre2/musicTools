@@ -131,8 +131,21 @@ public class KeyTest{
     }
 
     private Comparator<Chord> createComparator(Chord keyChord){
-     return (Chord a, Chord b) -> b.commonOvertones(keyChord)+b.commonNotes(keyChord)
-                                - a.commonOvertones(keyChord)+a.commonNotes(keyChord);
+     // return (Chord a, Chord b) -> b.commonOvertones(keyChord)+b.commonNotes(keyChord)
+     //                            - a.commonOvertones(keyChord)+a.commonNotes(keyChord);
+      return (Chord a, Chord b) -> {
+        List<NoteI> bCommon = new ArrayList<>();
+        List<NoteI> aCommon = new ArrayList<>();
+        // bCommon.addAll(b.Overtones());
+        // bCommon.retainAll(keyChord.getNotes());
+        // aCommon.addAll(a.Overtones());
+        // aCommon.retainAll(keyChord.getNotes());
+        bCommon.addAll(b.getNotes());
+        bCommon.retainAll(keyChord.Overtones());
+        aCommon.addAll(a.getNotes());
+        aCommon.retainAll(keyChord.Overtones());
+        return bCommon.size() - aCommon.size();
+      };
     }
 
     public void generateAjdChords(){
@@ -216,7 +229,6 @@ public class KeyTest{
     }
 
     public void printModeTable(int type){
-      String space = " ";
      List<Scale> modes = NoteCollectionFactory.getAllModes(this.root);
      Scale base = modes.get(0);
      modes.stream()

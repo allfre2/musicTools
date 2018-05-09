@@ -203,7 +203,7 @@ public class Tests{
 
   k.printModeTable(0);
   io.input();
-  int len = 4;
+  int len = 3;
   int limit = 15;
   int i = 0;
   List<List<Chord>> all = k.Paths(start, finish, len, limit);
