@@ -1,5 +1,7 @@
 package com.allfre2.musicruler;
 
+import java.util.HashMap;
+
 public class Symbols{
     public static final String natural = "♮";
     public static final String sharp = "♯";
@@ -32,4 +34,26 @@ public class Symbols{
     };
 
     public static final String[] romanNumerals = {"I", "II", "III", "IV", "V", "VI", "VII"};
+
+    public static final String[] figures = {"𝅝", "𝅗𝅥", "𝅘𝅥", "𝅘𝅥𝅮", "𝅘𝅥𝅯", "𝅘𝅥𝅰", "𝅘𝅥𝅱"};
+    public static final String[] figureNames = {
+        "whole note",
+        "half note",
+        "quarter note",
+        "eighth note",
+        "sixteenth note",
+        "thirty-second note",
+        "sixty-fourth note"
+    };
+    public static final HashMap<Integer, String> figureTable;
+    static{
+        figureTable = new HashMap<>();
+        figureTable.put(1, figures[0]);
+        figureTable.put(2, figures[1]);
+        figureTable.put(4, figures[2]);
+        figureTable.put(8, figures[3]);
+        figureTable.put(16, figures[4]);
+        figureTable.put(32, figures[5]);
+        figureTable.put(64, figures[6]);
+    }
 }
