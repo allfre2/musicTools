@@ -21,7 +21,7 @@ public class ChordTest{
     public static List<String> testCases(){
      Random rnd = new Random();
      List<String> tests = new ArrayList<>();
-     for(int i = 0; i < rnd.nextInt(maxTests)+10; ++i){
+     for(int i = 0; i < maxTests; ++i){
       tests.add(Note.random().toString());
      }
      return tests;

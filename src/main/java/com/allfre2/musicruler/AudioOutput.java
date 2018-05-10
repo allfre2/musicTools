@@ -5,18 +5,18 @@ import java.util.List;
 public abstract class AudioOutput{
 
     protected String instrument;
-	protected String timeUnitStr;
-	protected int timeUnit;
-	protected double secondsPerTimeUnit;
-	protected int beatsPerMeasure;
+    protected String timeUnitStr;
+    protected int timeUnit;
+    protected double secondsPerTimeUnit;
+    protected int beatsPerMeasure;
 
     public void setTimeUnit(int figure){
      this.timeUnitStr = Symbols.figureTable.get(figure);
-     if(this.timeUnitStr == null || this.timeUnitStr.isEmpty()){
-     	this.timeUnitStr = Symbols.figureTable.get(4); // quarter note
-     	this.timeUnit = 4;
+     if(this.timeUnitStr == null){
+        this.timeUnitStr = Symbols.figureTable.get(4); // quarter note
+        this.timeUnit = 4;
      }else{
-     	this.timeUnit = figure;
+        this.timeUnit = figure;
      }
     }
 
@@ -34,6 +34,6 @@ public abstract class AudioOutput{
     }
 
     // Abstract Methods
-	public abstract void play(NoteCollection notes, int figure);
-	public abstract void play(List<Chord> chords, int figure);
+    public abstract void play(NoteCollection notes, int figure);
+    public abstract void play(List<Chord> chords, int figure);
 }
