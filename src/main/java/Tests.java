@@ -185,7 +185,7 @@ public class Tests{
  }
 
  public static void ProgressionTest(){
-  KeyTest k = new KeyTest("C");
+  KeyTest k = new KeyTest("Eb");
   System.out.println("====");
   System.out.println("Common Chords between C and D");
   System.out.println(k.commonChordsWith(new KeyTest("D")));

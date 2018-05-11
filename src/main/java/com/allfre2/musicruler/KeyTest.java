@@ -194,8 +194,8 @@ public class KeyTest{
       path.add(start);
       paths.add(path);
       paths = _Paths(paths, end, max_len-1, limit);
-      Collections
-       .sort(paths, (p1, p2) -> curvature(p1) - curvature(p2));
+      // Collections
+      //  .sort(paths, (p1, p2) -> curvature(p1) - curvature(p2));
       return paths;
     }
 
@@ -239,9 +239,9 @@ public class KeyTest{
     public void printModeTable(int type){
      List<Scale> modes = NoteCollectionFactory.getAllModes(this.root);
      Scale base = modes.get(0);
+     String format = "%1$-15s%2$-6s%3$-6s%4$-6s%5$-6s%6$-6s%7$-6s%8$-6s\n";
      modes.stream()
           .forEach((Scale scale) -> {
-            String format = "%1$-15s%2$-6s%3$-6s%4$-6s%5$-6s%6$-6s%7$-6s%8$-6s\n";
              System.out.format(format,
                 NoteCollectionFactory.getSymbol(scale),
                 scale.chord(1).name(base),
