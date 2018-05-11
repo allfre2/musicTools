@@ -1,2 +1,5 @@
 #ignore target directory
-target/*
+*
+!src/
+!pom.xml
+!README.md

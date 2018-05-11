@@ -24,6 +24,10 @@ public class KeyTest{
     protected HashMap<Chord, TreeSet<Chord>> adjChords;
     protected Comparator<Chord> comparator;
 
+    public KeyTest (String noteStr){
+     this(new Note(noteStr));
+    }
+
     public KeyTest (NoteI root){
         this.root = root;
         this.rootScale = new MajorScale(this.root);
@@ -248,5 +252,14 @@ public class KeyTest{
                 scale.chord(6).name(base),
                 scale.chord(7).name(base));
           });
+    }
+
+    public List<String> commonChordsWith(KeyTest k){
+     List<Chord> common = new ArrayList<>();
+     common.addAll(getAllChords());
+     common.retainAll(k.getAllChords());
+     return common.stream()
+                  .map(c -> c.name())
+                  .collect(Collectors.toList());
     }
 }
