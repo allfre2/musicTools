@@ -8,15 +8,15 @@ import java.util.stream.Collectors;
 public class Tests{
 
  public static void main(String[] args){
-  NoteTest();
-  ScaleTest();
-  ChordTest();
-  semitoneTest();
-  ScaleDegreeTest(0);
-  ScaleDegreeTest(7);
-  KeyTest();
+  // NoteTest();
+  // ScaleTest();
+  // ChordTest();
+  // semitoneTest();
+  // ScaleDegreeTest(0);
+  // ScaleDegreeTest(7);
+  // KeyTest();
   ProgressionTest(); // FAIL
-  ChordFunctionAnalysis();
+  // ChordFunctionAnalysis();
  }
 
  public static void NoteTest(){
@@ -187,7 +187,7 @@ public class Tests{
  public static void ProgressionTest(){
   KeyTest k = new KeyTest(new Note("C"));
   Chord start = k.getRootScale().chord(1);
-  Chord finish = k.getRootScale().chord(6);
+  Chord finish = k.getRootScale().chord(5);
 
   System.out.println(
   k.getTriads()

@@ -1,5 +1,6 @@
 package com.allfre2.musicruler;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -131,21 +132,8 @@ public class KeyTest{
     }
 
     private Comparator<Chord> createComparator(Chord keyChord){
-     // return (Chord a, Chord b) -> b.commonOvertones(keyChord)+b.commonNotes(keyChord)
-     //                            - a.commonOvertones(keyChord)+a.commonNotes(keyChord);
-      return (Chord a, Chord b) -> {
-        List<NoteI> bCommon = new ArrayList<>();
-        List<NoteI> aCommon = new ArrayList<>();
-        // bCommon.addAll(b.Overtones());
-        // bCommon.retainAll(keyChord.getNotes());
-        // aCommon.addAll(a.Overtones());
-        // aCommon.retainAll(keyChord.getNotes());
-        bCommon.addAll(b.getNotes());
-        bCommon.retainAll(keyChord.Overtones());
-        aCommon.addAll(a.getNotes());
-        aCommon.retainAll(keyChord.Overtones());
-        return bCommon.size() - aCommon.size();
-      };
+     return (Chord a, Chord b) -> b.commonOvertones(keyChord)+b.commonNotes(keyChord)
+                                - a.commonOvertones(keyChord)+a.commonNotes(keyChord);
     }
 
     public void generateAjdChords(){
@@ -182,12 +170,28 @@ public class KeyTest{
      }
     }
 
+    // How diferent is a chord from the next
+    private int curvature(List<Chord> progression){
+      int result = 0;
+      Comparator<Chord> diff = (a, b) -> {
+        return (a.Overtones().size() - a.commonOvertones(b))
+              +(a.getNotes().size() - a.commonNotes(b));
+      }; 
+       for(int i = 1; i < progression.size(); ++i){
+        result += diff.compare(progression.get(i-1),
+                               progression.get(i));
+       }
+      return result;
+    }
+
     public List<List<Chord>> Paths(Chord start, Chord end, int max_len, int limit){
       List<List<Chord>> paths = new ArrayList<>();
       List<Chord> path = new ArrayList<>();
       path.add(start);
       paths.add(path);
       paths = _Paths(paths, end, max_len-1, limit);
+      Collections
+       .sort(paths, (p1, p2) -> curvature(p1) - curvature(p2));
       return paths;
     }
 
