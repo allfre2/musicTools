@@ -186,8 +186,10 @@ public class Tests{
 
  public static void ProgressionTest(){
   KeyTest k = new KeyTest("C");
+  System.out.println("====");
   System.out.println("Common Chords between C and D");
   System.out.println(k.commonChordsWith(new KeyTest("D")));
+  System.out.println("====");
   Chord start = k.getRootScale().chord(1);
   Chord finish = k.getRootScale().chord(5);
 
