@@ -1,4 +1,4 @@
-#ignore target directory
+#whitelist
 *
 !src/
 !pom.xml
