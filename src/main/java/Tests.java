@@ -3,6 +3,7 @@ import com.allfre2.musicruler.utilities.*;
  
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class Tests{
@@ -15,8 +16,9 @@ public class Tests{
   // ScaleDegreeTest(0);
   // ScaleDegreeTest(7);
   // KeyTest();
-  ProgressionTest(); // FAIL
+  // ProgressionTest(); // FAIL
   // ChordFunctionAnalysis();
+  MelodyHarmonizationTest();
  }
 
  public static void NoteTest(){
@@ -244,5 +246,36 @@ public class Tests{
     }
     if( !io.input().isEmpty() ) return;
    }
+  }
+
+  public static void MelodyHarmonizationTest(){
+
+    String[] melodies = {
+      "eb d c b c bb ab g eb"
+    };
+    Arrays.asList(melodies)
+          .stream()
+          .forEach((m) -> {
+            List<String> notes = new ArrayList<>(Arrays.asList(m.split(" ")));
+            KeyTest key = new KeyTest(notes.get(notes.size()-1));
+            notes.remove(notes.size()-1);
+            System.out.println("Melody: " + notes);
+            System.out.println("Key: " + key);
+            notes.stream()
+                 .forEach((note) -> {
+                  System.out.print(new Note(note));
+                  List<Chord> posibleChords =
+                   key.getTriads()
+                      .stream()
+                      .filter((chord) ->
+                        chord.getNotes().contains(new Note(note)))
+                      .collect(Collectors.toList());
+                  System.out.println(
+                    posibleChords.stream()
+                                 .map(c -> c.name(key.getRootScale()))
+                                 .collect(Collectors.toList())
+                  );
+                 });
+          });
   }
 }
