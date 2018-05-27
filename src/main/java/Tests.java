@@ -251,6 +251,7 @@ public class Tests{
   public static void MelodyHarmonizationTest(){
 
     String[] melodies = {
+      //Last note is the key
       "eb d c b c bb ab g eb",
       "d d f# b a c# bb e f g"
     };
