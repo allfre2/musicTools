@@ -251,7 +251,8 @@ public class Tests{
   public static void MelodyHarmonizationTest(){
 
     String[] melodies = {
-      "eb d c b c bb ab g eb"
+      "eb d c b c bb ab g eb",
+      "d d f# b a c# bb e f g"
     };
     Arrays.asList(melodies)
           .stream()
