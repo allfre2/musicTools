@@ -19,6 +19,7 @@ public class Tests{
   // ProgressionTest(); // FAIL
   // ChordFunctionAnalysis();
   MelodyHarmonizationTest();
+  MelodyHarmonizationTest2();
  }
 
  public static void NoteTest(){
@@ -248,13 +249,13 @@ public class Tests{
    }
   }
 
-  public static void MelodyHarmonizationTest(){
+  static final String[] melodies = {
+    //Last note is the key
+    "eb d c b c bb ab g eb",
+    "d d f# b a c# bb e f g"
+  };
 
-    String[] melodies = {
-      //Last note is the key
-      "eb d c b c bb ab g eb",
-      "d d f# b a c# bb e f g"
-    };
+  public static void MelodyHarmonizationTest(){
     Arrays.asList(melodies)
           .stream()
           .forEach((m) -> {
@@ -275,5 +276,30 @@ public class Tests{
                       .collect(Collectors.toList()));
                  });
           });
+  }
+
+  public static void MelodyHarmonizationTest2(){
+
+    Arrays.asList(melodies)
+      .stream()
+      .forEach((m) -> {
+        List<String> notes = new ArrayList<>(Arrays.asList(m.split(" ")));
+        String key = notes.get(notes.size()-1);
+        notes.remove(notes.size()-1);
+        System.out.println("Melody " + m);
+        System.out.println("Key: " + key);
+        KeyTest.genProgressions(
+          notes.stream()
+               .map(n -> new Note(n))
+               .collect(Collectors.toList()),
+          new Note(key),
+          5)
+          .forEach((List<Chord> list) -> {
+           System.out.println(
+           list.stream()
+               .map((Chord c) -> c.name(new MajorScale(new Note(key))))
+               .collect(Collectors.toList()));
+          });
+      });
   }
 }

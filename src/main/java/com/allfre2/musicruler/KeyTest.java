@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.Comparator;
+import java.util.Random;
 
 public class KeyTest{
 
@@ -261,5 +262,35 @@ public class KeyTest{
      return common.stream()
                   .map(c -> c.name())
                   .collect(Collectors.toList());
+    }
+
+    public static List<List<Chord>>
+     genProgressions(List<NoteI> melody, NoteI noteKey, int num){
+     List<List<Chord>> availableChords = new ArrayList<>();
+     KeyTest key = new KeyTest(noteKey);
+
+     for(NoteI note: melody){
+      availableChords
+       .add(key
+        .getTriads()
+        .stream()
+        .filter((chord) ->
+          chord.getNotes().contains(note))
+        // .map(c -> c.name(key.getRootScale()))
+        .collect(Collectors.toList()));
+     }
+
+     Random rnd = new Random();
+     List<List<Chord>> progressions = new ArrayList<>();
+     for(int i = 0; i < num; ++i){
+      List<Chord> tmp = new ArrayList<>();
+      for(List<Chord> chords: availableChords){
+        if(chords.size() > 0)
+        tmp.add(chords.get(rnd.nextInt(chords.size())));
+      }
+      progressions.add(tmp);
+     }
+
+     return progressions;
     }
 }
