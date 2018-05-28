@@ -233,7 +233,7 @@ public class KeyTest{
 
     @Override
     public String toString(){
-     return new Major(this.root).toString();
+     return (new Major(this.root)).name();
     }
 
     public void printModeTable(int type){

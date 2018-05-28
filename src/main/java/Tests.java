@@ -11,7 +11,7 @@ public class Tests{
  public static void main(String[] args){
   // NoteTest();
   // ScaleTest();
-  // ChordTest();
+  ChordTest();
   // semitoneTest();
   // ScaleDegreeTest(0);
   // ScaleDegreeTest(7);
@@ -266,17 +266,13 @@ public class Tests{
             notes.stream()
                  .forEach((note) -> {
                   System.out.print(new Note(note));
-                  List<Chord> posibleChords =
+                  System.out.println(
                    key.getTriads()
                       .stream()
                       .filter((chord) ->
                         chord.getNotes().contains(new Note(note)))
-                      .collect(Collectors.toList());
-                  System.out.println(
-                    posibleChords.stream()
-                                 .map(c -> c.name(key.getRootScale()))
-                                 .collect(Collectors.toList())
-                  );
+                      .map(c -> c.name(key.getRootScale()))
+                      .collect(Collectors.toList()));
                  });
           });
   }
