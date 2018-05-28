@@ -11,7 +11,7 @@ public class Tests{
  public static void main(String[] args){
   // NoteTest();
   // ScaleTest();
-  ChordTest();
+  // ChordTest();
   // semitoneTest();
   // ScaleDegreeTest(0);
   // ScaleDegreeTest(7);
