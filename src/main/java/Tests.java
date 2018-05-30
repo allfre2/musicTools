@@ -9,15 +9,15 @@ import java.util.stream.Collectors;
 public class Tests{
 
  public static void main(String[] args){
-  // NoteTest();
-  // ScaleTest();
-  // ChordTest();
-  // semitoneTest();
-  // ScaleDegreeTest(0);
-  // ScaleDegreeTest(7);
-  // KeyTest();
-  // ProgressionTest(); // FAIL
-  // ChordFunctionAnalysis();
+  NoteTest();
+  ScaleTest();
+  ChordTest();
+  semitoneTest();
+  ScaleDegreeTest(0);
+  ScaleDegreeTest(7);
+  KeyTest();
+  ProgressionTest(); // FAIL
+  ChordFunctionAnalysis();
   MelodyHarmonizationTest();
   MelodyHarmonizationTest2();
  }
@@ -80,7 +80,10 @@ public class Tests{
       try{
         Chord c = (Chord) chord.getConstructor(NoteI.class).newInstance(note);
         System.out.println(chord.getSimpleName() + " : " + c + " / " + c.name());
-        System.out.println(c.Overtones());
+        for(NoteI n: c.getNotes()){
+          System.out.println(n + " " + n.Overtones());
+        }
+        System.out.println("All overtones: " + c.Overtones());
         System.out.println("Common notes: with prev: " + prev + " = " + c.commonNotes(prev));
         System.out.println("... Common Overtones = " + c.commonOvertones(prev));
         prev = c;

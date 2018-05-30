@@ -3,17 +3,16 @@ package com.allfre2.musicruler;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 public abstract class Chord extends NoteCollection{
 
- //TODO: Keep order
  public List<NoteI> Overtones(){
- 	HashSet<NoteI> overtones = new HashSet<>();
- 	for (NoteI note: notes) {
- 	 for(NoteI overtoneNote: note.Overtones()){
+ 	LinkedHashSet<NoteI> overtones = new LinkedHashSet<>();
+ 	for (NoteI note: notes)
+ 	 for(NoteI overtoneNote: note.Overtones())
  	 	overtones.add(overtoneNote);
- 	 }
- 	}
+ 	 
    return new ArrayList<NoteI>(overtones);
  }
 
