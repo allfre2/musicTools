@@ -1,5 +1,6 @@
 #whitelist
 *
-!src/
+!*/
+!src/**
 !pom.xml
 !README.md
