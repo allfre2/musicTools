@@ -276,7 +276,6 @@ public class KeyTest{
         .stream()
         .filter((chord) ->
           chord.getNotes().contains(note))
-        // .map(c -> c.name(key.getRootScale()))
         .collect(Collectors.toList()));
      }
 

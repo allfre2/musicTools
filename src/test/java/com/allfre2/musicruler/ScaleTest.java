@@ -1,8 +1,6 @@
 package com.allfre2.musicruler;
 
-import java.util.Random;
 import java.util.List;
-import java.util.ArrayList;
 
 import org.junit.Assert;
 
@@ -19,12 +17,7 @@ public class ScaleTest{
 
     @Parameters
     public static List<String> testCases(){
-     Random rnd = new Random();
-     List<String> tests = new ArrayList<>();
-     for(int i = 0; i < maxTests; ++i){
-      tests.add(Note.random().toString());
-     }
-     return tests;
+     return TestData.genRandomNoteStrings(maxTests);
     }
 
     @Parameter(0)
