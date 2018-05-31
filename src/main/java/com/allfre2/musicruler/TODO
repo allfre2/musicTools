@@ -3,8 +3,8 @@ Note.java
     - Refactor !!!
 
 Chord.java
-	- Rewrite the chord method to preserver the order when the new list of overtones
-	   is created.
+	- Rewrite the chord method to preserve the order when the new list of overtones
+	   is created. (Done... can be better)
 
 Scale.java
 	- Optimize degreeOf(NoteI)
@@ -13,11 +13,10 @@ NoteCollectionFactory.java
 	- ... a lot of things ... but for now ...
 	- Fix boolean methods that classify chords, used by the name(Scale s) method of Chord class
     - Make a way to iterating trough the notes ... implement iterator or something
-    - Make the note lsit be inmutable after created
+    - Make the note list be inmutable after created
     - Implement an overtones function
 
 KeyTest.java
-	- got the adjacency lists. Have to make better overtone and common note relation functions.
 	- and make a progression generator
   - add Sus2 and Sus4 chords to the list of available chords
 	
@@ -50,8 +49,6 @@ General
 
 ====
 
- Create a Key class. A key is based on a scale... major, dorian, phrygian, lydian, mixolydian, aeolian(3)
-  or locrian.
  The Key should give all the posible chords for that tonality.
  It should classify every chord in a function ... , must account for modulations or secondary dominants
  (optional) should build a graph of chord relations and provide an API to access and use it.

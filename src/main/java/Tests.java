@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 public class Tests{
 
  public static void main(String[] args){
+  CFGTest();
   NoteTest();
   ScaleTest();
   ChordTest();
@@ -22,6 +23,10 @@ public class Tests{
   MelodyHarmonizationTest2();
  }
 
+ public static void CFGTest(){
+
+ }
+ 
  public static void NoteTest(){
   NoteI[][] notes = io.genRandomNotes(2,7);
 
