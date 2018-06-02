@@ -1,6 +1,8 @@
-import com.allfre2.musicruler.*;
+package com.allfre2.musicruler;
+
+//import com.allfre2.musicruler.*;
 import com.allfre2.musicruler.utilities.*;
- 
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,7 +28,7 @@ public class Tests{
  public static void CFGTest(){
 
  }
- 
+
  public static void NoteTest(){
   NoteI[][] notes = io.genRandomNotes(2,7);
 
@@ -251,7 +253,7 @@ public class Tests{
      }
      System.out.println("Common overtones with I: " + chord.commonOvertones(modes.get(0).chord(1)));
      System.out.println("Common notes with I: " + chord.commonNotes(modes.get(0).chord(1)));
-     System.out.println("--------------------------");  
+     System.out.println("--------------------------");
     }
     if( !io.input().isEmpty() ) return;
    }
