@@ -1,0 +1,17 @@
+Fix format method in CFG
+make a better validation of the tokens
+Debug the parser, check that the syntax tree is correct
+ - nested parentesis
+ - Empty operator
+ - Add some regular expresion functionality? ...
+ - 
+Make the genRandom mathods better
+Provide better error messages in InvalidCFGException class
+
+now---
+fix format
+fix validate
+fix lexer
+fix parser
+make generator
+make a validator for sentences, to check if they belong to the grammar
