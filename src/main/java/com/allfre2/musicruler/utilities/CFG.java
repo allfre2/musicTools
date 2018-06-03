@@ -26,13 +26,13 @@ public class CFG{
 
     protected HashMap<String, List<Node>> grammar;
 
-	public CFG(String cfg) throws InvalidCFGException{
+  public CFG(String cfg) throws InvalidCFGException{
 
      grammar = new HashMap<>();
 
      cfg = format(cfg);
 
-	 List<List<String>> productions = lexer(cfg);
+   List<List<String>> productions = lexer(cfg);
 
      validate(productions);
 
@@ -56,7 +56,7 @@ public class CFG{
       }
      }
      printGrammar();
-	}
+  }
 
     boolean isIdentifier(String token){
      return token.matches(Identifier);
