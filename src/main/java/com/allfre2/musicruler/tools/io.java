@@ -1,4 +1,4 @@
-package com.allfre2.musicruler.utilities;
+package com.allfre2.musicruler.tools;
 
 import com.allfre2.musicruler.*;
 import java.util.Random;

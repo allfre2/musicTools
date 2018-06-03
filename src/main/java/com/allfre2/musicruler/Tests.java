@@ -1,7 +1,7 @@
 package com.allfre2.musicruler;
 
 //import com.allfre2.musicruler.*;
-import com.allfre2.musicruler.utilities.*;
+import com.allfre2.musicruler.tools.*;
 
 import java.util.List;
 import java.util.ArrayList;

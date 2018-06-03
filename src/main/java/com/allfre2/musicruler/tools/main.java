@@ -1,4 +1,4 @@
-package com.allfre2.musicruler.utilities;
+package com.allfre2.musicruler.tools;
 
 public class main{
 

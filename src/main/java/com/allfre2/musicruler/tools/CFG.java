@@ -1,4 +1,4 @@
-package com.allfre2.musicruler.utilities;
+package com.allfre2.musicruler.tools;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -78,6 +78,14 @@ public class CFG{
        if(production.contains(Production))
         if(++equalsOp > 1)
            throw new InvalidCFGException("Multiple asignments in production");
+
+       int consecutive = 0;
+       for(String token: production){
+        if(token.equals(Or)) ++consecutive;
+        else consecutive = 0;
+        if(consecutive > 1)
+          throw new InvalidCFGException("Consecutive Or operators");
+       }
       }
     }
 
