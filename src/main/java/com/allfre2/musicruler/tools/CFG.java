@@ -74,16 +74,16 @@ public class CFG{
          throw new InvalidCFGException("Invalid production");
        }
 
-       int equalsOp = 0;
-       if(production.contains(Production))
-        if(++equalsOp > 1)
-           throw new InvalidCFGException("Multiple asignments in production");
-
-       int consecutive = 0;
+       int equalsOp = 0, orOperators = 0;
        for(String token: production){
-        if(token.equals(Or)) ++consecutive;
-        else consecutive = 0;
-        if(consecutive > 1)
+
+        if(token.equals(Production)) ++equalsOp;
+        if(equalsOp > 1)
+          throw new InvalidCFGException("Multiple asignments in production");
+
+        if(token.equals(Or)) ++orOperators;
+        else orOperators = 0;
+        if(orOperators > 1)
           throw new InvalidCFGException("Consecutive Or operators");
        }
       }
