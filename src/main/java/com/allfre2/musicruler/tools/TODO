@@ -5,7 +5,7 @@ Debug the parser, check that the syntax tree is correct
  - Empty operator
  - Add some regular expresion functionality? ...
  - 
-Make the genRandom mathods better
+Make the genRandom methods better
 Provide better error messages in InvalidCFGException class
 
 now---

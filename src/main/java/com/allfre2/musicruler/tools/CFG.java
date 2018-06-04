@@ -32,7 +32,7 @@ public class CFG{
 
      cfg = format(cfg);
 
-   List<List<String>> productions = lexer(cfg);
+     List<List<String>> productions = lexer(cfg);
 
      validate(productions);
 
@@ -152,7 +152,6 @@ public class CFG{
       }
       sentence = next.replaceAll(" +", " ");
      }
-
      return sentence;
     }
 
@@ -164,23 +163,21 @@ public class CFG{
 
      String str = "";
 
-     if(node.getType().equals(Or)){
+     if(node.getType().equals(Or))
       str += genRandom(children.get(rnd.nextInt(children.size())));
-     }else{
-       for(Node n: children){
+     else
+       for(Node n: children)
         str += genRandom(n) + Space;
-       }
-     }
+
      return str;
     }
 
     public void printGrammar(){
      System.out.println("\n\n== Complete Parsed Grammar ==\n");
-     for(String key: grammar.keySet()){
-        for(Node n: grammar.get(key)){
+     for(String key: grammar.keySet())
+        for(Node n: grammar.get(key))
             System.out.println("key:" + key + " -> " + n.getStr());
-        }
-     }
+
      System.out.println();
     }
 
@@ -297,9 +294,11 @@ public class CFG{
            tmp.push(finalNodes.pop());
            finalNodes.push(new Node(Or, λ, new ArrayList<Node>(tmp)));
          }
-         if(finalNodes.size() > 1){
+
+         if(finalNodes.size() > 1)
           return new Node(Exp, λ, new ArrayList<Node>(finalNodes));
-         }else return finalNodes.pop();
+         else
+          return finalNodes.pop();
       }
 
       int findMatch(List<String> tokens, int i){
