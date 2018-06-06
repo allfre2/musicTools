@@ -1,0 +1,46 @@
+
+The idea is as follows:
+
+ * Terminate the markov set of classes so that you can generate:
+ 	- A sentence, of a fixed number of words
+ 	- Ensure that the sentence makes some kind of sense
+ 	- You are able to pass parameters as to the first or last word, theme words
+ 	- Classify wordsas thematic words
+ 	- You are able to make the sentence refer to specific words, subjects, etc ...
+
+ * Make them run asynchronously, so that you can inform the user when the data is
+    being donloaded and the text is being generated.
+    Also make some wrapper class to especify a context grammar and generate specific
+    styles of text (poems, haiku, etc ...)
+    Implement oberserver pattern, see what other pattern can be used
+    Add capability to parse html and get text from the web
+
+ * Make the grammars be usable to generate the text and also the chords (harmony)
+
+ * Create the Context Free Grammars for some styles of song
+
+ * Make a Harmonizer class to generate the harmony for the songs
+
+ * Create a Song Writer finally
+
+ * Create Android app
+
+ * Create SpringMVC back-end, front-end for the tool
+
+ * Learn to use jitpack, create a github page to log about the experience
+
+
+=== Finish quick ===
+
+Implement Suggested keyWords
+
+Implement Ending Key word and Starting keyword
+
+? Parse the P tags from html ... :/
+
+Integrate with musicruler.tools
+
+Make the context free grammar for generating the chords and the different
+types of text/poem
+
+Make Song Writer
