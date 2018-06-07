@@ -66,25 +66,30 @@ public class CFG{
      throws InvalidCFGException
     {
       for(List<String> production: productions){
+
+        int line, index;
+        
+        line = productions.indexOf(production);
+
        if(production.size() < 3 || !(isIdentifier(production.get(0))) ||
         !(production.get(1).equals(Production)) || production.get(2).equals(Or) ||
           production.get(production.size()-1).equals(Or))
-       {
-        System.out.println(production);
-         throw new InvalidCFGException("Invalid production");
-       }
+
+         throw new InvalidCFGException("Invalid production", line, 0);
 
        int equalsOp = 0, orOperators = 0;
        for(String token: production){
 
+        index = production.indexOf(token);
+
         if(token.equals(Production)) ++equalsOp;
         if(equalsOp > 1)
-          throw new InvalidCFGException("Multiple asignments in production");
+          throw new InvalidCFGException("Multiple asignments in production", line, index);
 
         if(token.equals(Or)) ++orOperators;
         else orOperators = 0;
         if(orOperators > 1)
-          throw new InvalidCFGException("Consecutive Or operators");
+          throw new InvalidCFGException("Consecutive Or operators", line, index);
        }
       }
     }
@@ -113,10 +118,8 @@ public class CFG{
          ++i;
         }
        }
-      System.out.println("Did "+i+" Passes!");
 
-      System.out.println("cfg after format:");
-      System.out.println(cfg);
+      System.out.println("Did "+i+" Passes!\ncfg after format:\n"+cfg);
 
       return cfg;
     }
@@ -305,24 +308,22 @@ public class CFG{
         Stack<String> paren = new Stack<>();
         paren.push(tokens.get(i));
 
-        ++i;
-        while(i < tokens.size() && !paren.isEmpty()){
+        while(++i < tokens.size() && !paren.isEmpty()){
 
           String token = tokens.get(i);
 
           if(token.equals(OpenParen))
-              paren.push(OpenParen);
+            paren.push(OpenParen);
           else if(token.equals(CloseParen)){
             if(paren.isEmpty()){
-             i = -1;
+             i = 0;
              break;
             }
-              paren.pop();
+            paren.pop();
           }
-         ++i;
         }
 
-       return paren.isEmpty() ? i-1: -1;
+        return i-1;
       }
 
       // Get a String of the node in prefix/polish notation
