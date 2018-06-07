@@ -1,4 +1,4 @@
-package com.allfre2.musicruler.tools;
+package com.allfre2.musicruler.songs;
 
 public class Token<T> implements Comparable<Token<T>>{
     

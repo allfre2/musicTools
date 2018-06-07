@@ -1,4 +1,4 @@
-package com.allfre2.musicruller.tools;
+package com.allfre2.musicruller.songs;
 
 public class Soundex{
 

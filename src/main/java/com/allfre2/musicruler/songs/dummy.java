@@ -1,4 +1,4 @@
-package com.allfre2.musicruler.tools;
+package com.allfre2.musicruler.songs;
 
 import java.util.HashMap;
 import java.util.TreeSet;
