@@ -1,4 +1,4 @@
-package com.allfre2.musicruller.songs;
+package com.allfre2.musicruler.songs;
 
 public class Soundex{
 
@@ -21,7 +21,8 @@ String[] words = {"zach", "zac", "lake", "bake", "brad", "lad", "horrible",
         System.out.println(s1 + " - " + s2 + " = "
                         + soundex(s1) + " - " + soundex(s2) + " = "
                         + diff(soundex(s1), soundex(s2))
-                        + ", ld(" + s1 + ", " + s2 + ") = " + ld(s1, s2));
+                        + ", ld(" + s1 + ", " + s2 + ") = " + ld(s1, s2)
+                        + " distance ... = " + distance(s1,s2));
     }
 
   private static String getCode(char c){
@@ -166,5 +167,9 @@ String[] words = {"zach", "zac", "lake", "bake", "brad", "lad", "horrible",
 
     // Step 7
     return d[n][m];
+  }
+
+  public static int distance(String s1, String s2){
+    return 4 - diff(soundex(s1), soundex(s2)) + ld(s1, s2);
   }
 }

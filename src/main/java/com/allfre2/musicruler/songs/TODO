@@ -1,0 +1,15 @@
+Finish the generate methods with starting and ending conditions
+Make the tokenizer ... whatever collect the most common words, sentence enders, starters
+Implement some lyrics with this new functionalities:
+ haiku, etc ...
+ find the rhymes with the Soundex class
+
+
+Implement a harmony class (harmonizer ..., progression generator..., whatever :/ )
+
+Make a Song class, it will Take a Lyrics implementation, a Harmonizer (f u whatever)
+and given the Lyrics generated it will pass them to the harmonizer and it will
+use a CFG to generate a chord pattern that the Key class will the use to
+generate a sequence of chords following that grammar
+implements several lyrics classes (poems and other), several harmony types according to a 
+context free grammar and make use key classes to create the chords

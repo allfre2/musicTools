@@ -90,10 +90,19 @@ public abstract class Markov<T>{
    return selectRandom(keys);
   }
 
+  public List<Token<T>> generate(int len){
+    return generate(len, order, null);
+  }
+
   // TODO use keyTokens, ending words, rhymes...
   public List<Token<T>> generate(int len, int order){
     System.out.println("Generating text of length " + len);
     return generate(len, order, null);
+  }
+
+  public List<Token<T>> generate(List<Token> firstWord, List<Token<T>> lastWord,
+    List<Token<T>> keyTokens, int len){
+    return null;
   }
 
   public List<Token<T>> generate(int len, int order, List<Token<T>> keyTokens){
