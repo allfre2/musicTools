@@ -4,6 +4,12 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.Random;
+
+//
+import com.allfre2.musicruler.tools.io;
+//
 
 public abstract class Poem implements Lyrics{
 
@@ -14,7 +20,12 @@ public abstract class Poem implements Lyrics{
         e.printStackTrace();
      }
      generator = new StringMarkov(data);
+     generator.countTokens();
+     buildRhymeTable();
+     verses = new HashMap<>();
     }
+
+    protected static final Random rnd = new Random();
 
     protected static final String verse = "verse";
     protected static final String separator = "-";
@@ -32,7 +43,21 @@ public abstract class Poem implements Lyrics{
     public void setCfg(String cfg){
         this.cfg = cfg;
     }
- 
+
+    public void setCfgStart(String start){
+        this.start = start;
+    }
+
+    protected int lineWidth;
+
+    public int getLineWidth(){
+        return lineWidth;
+    }
+    
+    public void setLineWidth(int lineWidth){
+        this.lineWidth = lineWidth;
+    }
+    
 	protected DataSource data;
 
 	public void setDataSource(DataSource dataSource){
@@ -43,7 +68,7 @@ public abstract class Poem implements Lyrics{
 		return data;
 	}
 
-    protected int maxRhymeDistance = 4;
+    protected int maxRhymeDistance;
 
     public int getMaxRhymeDistance(){
     	return maxRhymeDistance;
@@ -57,22 +82,36 @@ public abstract class Poem implements Lyrics{
  
 	public void buildRhymeTable(){
 
+List<Token<String>> tokens = generator.tokens();
+// System.out.println("building rhyme table");
+// System.out.println(tokens);
+// System.out.println("\n\n " + tokens.size()*tokens.size() + " Comparisons need to be performed.");
+// io.input();
+
 	 rhymeTable = new HashMap<>();
 
-     for(Token<String> token: data.getTokens()){
+     for(Token<String> token: tokens){
 
       if(!rhymeTable.containsKey(token))
         rhymeTable.put(new Token<String>(token), new ArrayList<Token<String>>());
 
-      for(Token<String> adjToken: data.getTokens()){
+      for(Token<String> adjToken: tokens){
 
       	if(Soundex.distance(token.get(), adjToken.get()) < maxRhymeDistance){
-
+// System.out.println("Comparing with soundex " + token.get() + " and " + adjToken.get());
+// System.out.println("result = " + Soundex.distance(token.get(), adjToken.get()));
+// io.input();
           List<Token<String>> rhymes = rhymeTable.get(token);
           rhymes.add(new Token<String>(adjToken));
 
       	}
       }
+     }
+
+System.out.println("Final Rhyme Table ...\n\n");
+     for(Token<String> t: rhymeTable.keySet()){
+        System.out.println("key: " + t + " " + rhymeTable.get(t) );
+        io.input();
      }
 	}
 
@@ -80,16 +119,22 @@ public abstract class Poem implements Lyrics{
 
      String poemStr = "";
 
-     for(String verseStr: poem.genRandom(start, 1).split(" "))
+     for(String verseStr: poem.genRandom(start, 1).split(" ")){
+        System.out.println("Generating: verStr = " + verseStr);
+        io.input();
         if(verseStr.equals(newLine))
             poemStr += "\n";
         else
             poemStr += genVerse(verseStr);
+        System.out.println("poemStr = " + poemStr);
+     }
 
      return poemStr;
     }
 
     protected StringMarkov generator;
+
+    HashMap<Integer, List<Token<String>>> verses;
 
     public String genVerse(String verseStr){
 
@@ -97,7 +142,7 @@ public abstract class Poem implements Lyrics{
                         +number+separator
                         +number+separator
                         +number+separator))
-        System.out.println("Error: verse is in incorrect format");
+        System.out.println("Error: verse is not in the correct format");
 
      List<String> fields = Arrays.asList(verseStr.split(separator));
      // Store the numbers and genrated string/sentence/verse
@@ -112,6 +157,24 @@ public abstract class Poem implements Lyrics{
      //   verse and generateEndingWith with words that rhyme with the corresponding verse
      // Use the computed rhymeTable to finds these words.
 
-     return null;
+     // TODO fields.get(2) make sense with ...
+
+     int rhymeIndex = Integer.parseInt(fields.get(3));
+
+     List<Token<String>> rhymeTokens = verses.get(rhymeIndex);
+
+     List<Token<String>> newVerse =
+      generator.generateEndingWith(rhymeTokens,
+                         null, // When fields.get(2) is sorted out here will be some related words
+                         rnd.nextInt(lineWidth/2)+(lineWidth/2));
+
+     int key = Integer.parseInt(fields.get(1));
+
+     if(!verses.containsKey(key))
+        verses.put(key, rhymeTokens);
+
+     return newVerse.stream()
+                    .map(token -> token.get())
+                    .reduce("", (s1, s2) -> s1 + " " + s2);
     }
 }

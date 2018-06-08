@@ -40,9 +40,9 @@ public class CFG{
      
      for(List<String> production: productions){
 
-      System.out.println(production);
+      // System.out.println(production);
       Node node = new Node(production);
-      System.out.println(node.getStr());
+      // System.out.println(node.getStr());
 
       String sym = node.getSymbol();
 
@@ -119,7 +119,7 @@ public class CFG{
         }
        }
 
-      System.out.println("Did "+i+" Passes!\ncfg after format:\n"+cfg);
+      // System.out.println("Did "+i+" Passes!\ncfg after format:\n"+cfg);
 
       return cfg;
     }

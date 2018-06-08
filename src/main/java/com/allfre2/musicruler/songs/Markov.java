@@ -27,9 +27,12 @@ public abstract class Markov<T>{
     this.order = order;
   }
 
+  public List<Token<T>> tokens(){
+    return tokenCount;
+  }
+
   public void buildTable(List<Token<T>> tokens){
 
-    System.out.println("Building Tables ...");
     this.tokens = tokens;
 
     for(int i = 1; i < order; ++i)
@@ -42,8 +45,6 @@ public abstract class Markov<T>{
     // Build reverse table
     List<Token<T>> savedTokens = new ArrayList<Token<T>>(this.tokens);
     Collections.reverse(this.tokens);
-    System.out.println(savedTokens+" Original Tokens");
-    System.out.println(this.tokens+" Reversed Tokens");
 
     for(int i = 1; i < order; ++i)
       buildTable(i);
@@ -52,9 +53,6 @@ public abstract class Markov<T>{
     reverseTable = markovTable;
     markovTable = tmpTable;
     this.tokens = savedTokens;
-    System.out.println(markovTable + " Markov Table");
-    System.out.println(reverseTable + " Reversed Table");
-    com.allfre2.musicruler.tools.io.input();
   }
 
   protected void buildTable(int order){
@@ -119,7 +117,6 @@ public abstract class Markov<T>{
   }
 
   public List<Token<T>> generate(int len, int order){
-    System.out.println("Generating text of length " + len);
     return generate(len, order, null);
   }
 
@@ -196,7 +193,6 @@ public abstract class Markov<T>{
 
      window.add(new Token<T>(next));
    }
-   System.out.println("\n\nHealth of generated text is: " + health(result) + "\n\n");
    return result;
   }
 
