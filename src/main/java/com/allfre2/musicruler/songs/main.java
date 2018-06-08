@@ -5,14 +5,14 @@ public class main{
  public static void main(String[] args){
 
  	String test = 
- 	 "A = b B | C A 5 (F Z (R | E x) s | o);" +
+ 	 "A = b B | C A 5 (F-3-1 Z (R | E-0-0 x) s | o);" +
  	 "F = C o;" +
- 	 "F = F | R;" +
+ 	 "F-3-1 = F | R;" +
  	 "R = 1 | 2 | 3 | 4;" +
  	 "Z = R s (o (A | 0));" +
  	 "x = > | <;" +
  	 "o = 6 (o | E);" +
- 	 "E = E;" +
+ 	 "E-0-0 = E-0-0;" +
  	 "s = x x F;" +
  	 "B = i;" +
  	 "b = (r) | " + CFG.Empty + ";" +
@@ -33,6 +33,8 @@ public class main{
  	 "SD = ii | ii-7 | IV | IVmaj7 | iv;" +
  	 "D = V | v | V7 | viio ;";
 
+  String test4 = "poem = verse-1-23-23 nl verse-9-8-7 nl verse-2-23-5;";
+
   try{
   // CFG cfg = new CFG("G = A B C; \n\n== A \n= B\n| C|G;\n\n\nF= (V)| (A| C);; =A;G  ");
   CFG cfg = new CFG("G = A B C; \n\nA \n= B\n| C|G;\n\n\nF= (V)| (A| C);\n\nF=(G) (Z) V b;");
@@ -43,6 +45,9 @@ public class main{
 
   CFG t3 = new  CFG(test3);
   System.out.println("Random: " + t3.genRandom("prog", 5));
+
+  CFG t4 = new  CFG(test4);
+  System.out.println("Random: " + t4.genRandom("poem", 5));
 
   }catch(InvalidCFGException e){
   	e.printStackTrace();

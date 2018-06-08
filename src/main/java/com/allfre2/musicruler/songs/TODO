@@ -1,9 +1,8 @@
 Finish the generate methods with starting and ending conditions
-Make the tokenizer ... whatever collect the most common words, sentence enders, starters
+Make the tokenizer ... whatever collect the most common words, sentence enders, starters ... check (needs some work and improvement)
 Implement some lyrics with this new functionalities:
  haiku, etc ...
- find the rhymes with the Soundex class
-
+ find the rhymes with the Soundex class ... check
 
 Implement a harmony class (harmonizer ..., progression generator..., whatever :/ )
 
