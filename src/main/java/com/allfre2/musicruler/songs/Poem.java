@@ -108,11 +108,11 @@ List<Token<String>> tokens = generator.tokens();
       }
      }
 
-System.out.println("Final Rhyme Table ...\n\n");
-     for(Token<String> t: rhymeTable.keySet()){
-        System.out.println("key: " + t + " " + rhymeTable.get(t) );
-        io.input();
-     }
+// System.out.println("Final Rhyme Table ...\n\n");
+//      for(Token<String> t: rhymeTable.keySet()){
+//         System.out.println("key: " + t + " " + rhymeTable.get(t) );
+//         io.input();
+//      }
 	}
 
     public String generate(){
@@ -120,13 +120,13 @@ System.out.println("Final Rhyme Table ...\n\n");
      String poemStr = "";
 
      for(String verseStr: poem.genRandom(start, 1).split(" ")){
-        System.out.println("Generating: verStr = " + verseStr);
+        // System.out.println("Generating: verStr = " + verseStr);
         io.input();
         if(verseStr.equals(newLine))
             poemStr += "\n";
         else
             poemStr += genVerse(verseStr);
-        System.out.println("poemStr = " + poemStr);
+        // System.out.println("poemStr = " + poemStr);
      }
 
      return poemStr;
@@ -138,6 +138,7 @@ System.out.println("Final Rhyme Table ...\n\n");
 
     public String genVerse(String verseStr){
 
+// System.out.println(" = " + verseStr);
      if(!verseStr.matches(verse+separator
                         +number+separator
                         +number+separator
@@ -145,6 +146,7 @@ System.out.println("Final Rhyme Table ...\n\n");
         System.out.println("Error: verse is not in the correct format");
 
      List<String> fields = Arrays.asList(verseStr.split(separator));
+     // System.out.println("fields: " + fields);
      // Store the numbers and genrated string/sentence/verse
      // in some sort of data structure.
 

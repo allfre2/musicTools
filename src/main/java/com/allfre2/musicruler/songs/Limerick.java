@@ -14,8 +14,8 @@ public class Limerick extends Poem{
 	 setDataSource(data);
 	 setCfg(limerickCFG);
 	 setCfgStart("limerick");
-	 setLineWidth(10);
-	 setMaxRhymeDistance(6);
+	 setLineWidth(8);
+	 setMaxRhymeDistance(4);
 	 init();
 	}
 }
