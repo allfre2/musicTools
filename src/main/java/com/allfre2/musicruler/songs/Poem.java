@@ -121,7 +121,7 @@ List<Token<String>> tokens = generator.tokens();
 
      for(String verseStr: poem.genRandom(start, 1).split(" ")){
         // System.out.println("Generating: verStr = " + verseStr);
-        io.input();
+        // io.input();
         if(verseStr.equals(newLine))
             poemStr += "\n";
         else
@@ -143,7 +143,8 @@ List<Token<String>> tokens = generator.tokens();
                         +number+separator
                         +number+separator
                         +number+separator))
-        System.out.println("Error: verse is not in the correct format");
+        // System.out.println("Error: verse is not in the correct format");
+        ;
 
      List<String> fields = Arrays.asList(verseStr.split(separator));
      // System.out.println("fields: " + fields);

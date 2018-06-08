@@ -140,7 +140,7 @@ public abstract class Markov<T>{
   public List<Token<T>> generate(int len, int order, List<Token<T>> keyTokens){
 
    if(markovTable == null || markovTable.size() < order){
-    for(int i = markovTable.size(); i <= order; ++i)
+    for(int i = 1; i <= order; ++i)
      buildTable(i);
     this.order = order;
    }
