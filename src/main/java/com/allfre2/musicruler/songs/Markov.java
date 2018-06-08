@@ -14,6 +14,9 @@ public abstract class Markov<T>{
   protected List<Token<T>> tokens;
   protected List<Token<T>> tokenCount;
   protected List< HashMap<List<Token<T>>, List<Token<T>>> > markovTable;
+  protected List< HashMap<List<Token<T>>, List<Token<T>>> > reverseTable;
+  protected List< HashMap<List<Token<T>>, List<Token<T>>> > tmpTable;
+  protected List<Token<T>> seed;
   protected int order;
 
   public int getOrder(){
@@ -26,11 +29,32 @@ public abstract class Markov<T>{
 
   public void buildTable(List<Token<T>> tokens){
 
-    System.out.println("Building Table ...");
+    System.out.println("Building Tables ...");
     this.tokens = tokens;
 
     for(int i = 1; i < order; ++i)
       buildTable(i);
+
+    // Save table
+    tmpTable = markovTable;
+    markovTable = null;
+
+    // Build reverse table
+    List<Token<T>> savedTokens = new ArrayList<Token<T>>(this.tokens);
+    Collections.reverse(this.tokens);
+    System.out.println(savedTokens+" Original Tokens");
+    System.out.println(this.tokens+" Reversed Tokens");
+
+    for(int i = 1; i < order; ++i)
+      buildTable(i);
+
+    // Restore
+    reverseTable = markovTable;
+    markovTable = tmpTable;
+    this.tokens = savedTokens;
+    System.out.println(markovTable + " Markov Table");
+    System.out.println(reverseTable + " Reversed Table");
+    com.allfre2.musicruler.tools.io.input();
   }
 
   protected void buildTable(int order){
@@ -94,15 +118,26 @@ public abstract class Markov<T>{
     return generate(len, order, null);
   }
 
-  // TODO use keyTokens, ending words, rhymes...
   public List<Token<T>> generate(int len, int order){
     System.out.println("Generating text of length " + len);
     return generate(len, order, null);
   }
 
-  public List<Token<T>> generate(List<Token> firstWord, List<Token<T>> lastWord,
+  public List<Token<T>> generateStartingWith(List<Token<T>> firstWord,
     List<Token<T>> keyTokens, int len){
-    return null;
+     seed = firstWord;
+    return generate(len, order, keyTokens);
+  }
+
+  public List<Token<T>> generateEndingWith(List<Token<T>> lastWord,
+    List<Token<T>> keyTokens, int len){
+     seed = lastWord;
+     tmpTable = markovTable;
+     markovTable = reverseTable;
+     List<Token<T>> rslt = generate(len, order, keyTokens);
+     markovTable = tmpTable;
+     Collections.reverse(rslt);
+    return rslt;
   }
 
   public List<Token<T>> generate(int len, int order, List<Token<T>> keyTokens){
@@ -115,7 +150,11 @@ public abstract class Markov<T>{
 
    List<Token<T>> result = new ArrayList<>();
    LinkedList<Token<T>> window = new LinkedList<>(); // Sliding window
-   Token<T> start = randomToken();
+   Token<T> start;
+   if(seed != null && !seed.isEmpty())
+    start = selectRandom(seed);
+   else
+    start = randomToken();
 
    result.add(start);
    window.add(start);
