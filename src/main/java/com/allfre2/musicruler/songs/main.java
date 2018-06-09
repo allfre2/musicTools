@@ -1,5 +1,7 @@
 package com.allfre2.musicruler.songs;
 
+import com.allfre2.musicruler.tools.io;
+
 public class main{
 
  public static void main(String[] args){
@@ -35,6 +37,15 @@ public class main{
 
   String test4 = "poem = verse-1-23-23 nl verse-9-8-7 nl verse-2-23-5;";
 
+  String test5 =  "verse = prog;"
+                 +"prog = (T | t | D | SD ) (T | t | SD ) (D | t | SD) T;"
+                 +"T = I | Imaj7;"
+                 +"T = i | i-7;"
+                 +"t = iii | iii-7 | vi | bVI | bIII | bIII+;"
+                 +"SD = IV | iv | ii | iio | ii-7b5 | ii-7;"
+                 +"D = V | V7 | viio | viio7 | v | v-7;"
+                 +"n = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;";
+
   try{
   // CFG cfg = new CFG("G = A B C; \n\n== A \n= B\n| C|G;\n\n\nF= (V)| (A| C);; =A;G  ");
   CFG cfg = new CFG("G = A B C; \n\nA \n= B\n| C|G;\n\n\nF= (V)| (A| C);\n\nF=(G) (Z) V b;");
@@ -49,12 +60,17 @@ public class main{
   CFG t4 = new  CFG(test4);
   System.out.println("Random: " + t4.genRandom("poem", 5));
 
-  Limerick poem = new Limerick(new URLDataSource("https://www.gnu.org/licenses/gpl-3.0.txt"));
+  CFG t5 = new CFG(test5);
+  for(int i = 0; i < 6; ++i){
+   System.out.println("Random: " + t5.genRandom("verse", 7));
+   io.input();
+  }
+
+  // Limerick poem = new Limerick(new URLDataSource("https://www.gnu.org/licenses/gpl-3.0.txt"));
   // Limerick poem = new Limerick(new FileDataSource("/home/allfre2/a.txt"));
-  System.out.println(poem.generate() + "\n");
-  System.out.println(poem.generate() + "\n");
-  System.out.println(poem.generate() + "\n");
-  // FAIL!!!
+  // System.out.println(poem.generate() + "\n");
+  // System.out.println(poem.generate() + "\n");
+  // System.out.println(poem.generate() + "\n");
   }catch(InvalidCFGException e){
   	e.printStackTrace();
   }
