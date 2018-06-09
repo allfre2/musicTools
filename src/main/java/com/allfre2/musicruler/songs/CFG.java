@@ -40,10 +40,7 @@ public class CFG{
      
      for(List<String> production: productions){
 
-      // System.out.println(production);
       Node node = new Node(production);
-      // System.out.println(node.getStr());
-
       String sym = node.getSymbol();
 
       if(grammar.containsKey(sym)){
@@ -118,9 +115,6 @@ public class CFG{
          ++i;
         }
        }
-
-      // System.out.println("Did "+i+" Passes!\ncfg after format:\n"+cfg);
-
       return cfg;
     }
 
@@ -322,8 +316,7 @@ public class CFG{
             paren.pop();
           }
         }
-
-        return i-1;
+       return i-1;
       }
 
       // Get a String of the node in prefix/polish notation
@@ -342,9 +335,7 @@ public class CFG{
            str += (str.isEmpty() ? "" : " ")
                    + node.getStr();
 
-        str += postfix;
-
-        return str;
+        return str + postfix;
       }
   
       @Override

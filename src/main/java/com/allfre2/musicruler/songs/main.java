@@ -66,11 +66,11 @@ public class main{
    io.input();
   }
 
-  // Limerick poem = new Limerick(new URLDataSource("https://www.gnu.org/licenses/gpl-3.0.txt"));
+  Lyrics poem = new Limerick(new URLDataSource("https://www.gnu.org/licenses/gpl-3.0.txt"));
   // Limerick poem = new Limerick(new FileDataSource("/home/allfre2/a.txt"));
-  // System.out.println(poem.generate() + "\n");
-  // System.out.println(poem.generate() + "\n");
-  // System.out.println(poem.generate() + "\n");
+  System.out.println(poem.generate() + "\n");
+  System.out.println(poem.generate() + "\n");
+  System.out.println(poem.generate() + "\n");
   }catch(InvalidCFGException e){
   	e.printStackTrace();
   }
