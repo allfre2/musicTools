@@ -202,7 +202,6 @@ public class CFG{
       }
 
       public Node(List<String> production) throws InvalidCFGException{
-
          this.type = Production;
          this.symbol = production.get(0);
          this.children = new ArrayList<>();

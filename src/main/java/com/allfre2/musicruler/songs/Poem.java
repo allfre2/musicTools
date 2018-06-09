@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Arrays;
 import java.util.stream.Collectors;
+import java.util.Collections;
 import java.util.Random;
 
 //
@@ -83,7 +84,7 @@ public abstract class Poem implements Lyrics{
 	public void buildRhymeTable(){
 
 List<Token<String>> tokens = generator.tokens();
-// System.out.println("building rhyme table");
+System.out.println("building rhyme table");
 // System.out.println(tokens);
 // System.out.println("\n\n " + tokens.size()*tokens.size() + " Comparisons need to be performed.");
 // io.input();
@@ -108,6 +109,14 @@ List<Token<String>> tokens = generator.tokens();
       }
      }
 
+     //Sort
+     for(Token<String> key: rhymeTable.keySet()){
+        List<Token<String>> rhymes = rhymeTable.get(key);
+        Collections.sort(rhymes,
+            (t1, t2) ->
+             Soundex.distance(t1.get(),t2.get()));
+     }
+
 // System.out.println("Final Rhyme Table ...\n\n");
 //      for(Token<String> t: rhymeTable.keySet()){
 //         System.out.println("key: " + t + " " + rhymeTable.get(t) );
@@ -116,6 +125,8 @@ List<Token<String>> tokens = generator.tokens();
 	}
 
     public String generate(){
+
+verses = new HashMap<>();
 
      String poemStr = "";
 
@@ -166,6 +177,10 @@ List<Token<String>> tokens = generator.tokens();
 
      List<Token<String>> rhymeTokens = verses.get(rhymeIndex);
 
+//  if(rhymeTokens != null){
+//     // rhymeTokens = rhymeTokens.subList(0,rhymeTokens.size()/2);
+// System.out.println(" = " + rhymeTokens.size()/2 + " , " + rhymeTokens.size());
+//  }
      List<Token<String>> newVerse =
       generator.generateEndingWith(rhymeTokens,
                          null, // When fields.get(2) is sorted out here will be some related words
@@ -173,8 +188,13 @@ List<Token<String>> tokens = generator.tokens();
 
      int key = Integer.parseInt(fields.get(1));
 
-     if(!verses.containsKey(key))
+     if(!verses.containsKey(key)){
+        List<Token<String>> tmp = rhymeTable.get(newVerse.get(newVerse.size()-1));
+        if(tmp != null)
+         // rhymeTokens = tmp.subList(tmp.size()/2, tmp.size());
+         rhymeTokens = tmp;
         verses.put(key, rhymeTokens);
+     }
 
      return newVerse.stream()
                     .map(token -> token.get())
