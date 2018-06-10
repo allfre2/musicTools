@@ -38,16 +38,32 @@ public class main{
   String test4 = "poem = verse-1-23-23 nl verse-9-8-7 nl verse-2-23-5;";
 
   String test5 =  "verse = progMaj | progMin;"//| progMod;"
-                 +"progMaj = (T | t | D | SD ) (T | t | SD ) (D | t | SD) T;"
+                 +"progMaj = (T | t | D | SD ) (c5 | t | SD ) (D | t | SD) (T|t);"
+                 +"progMaj = ( D | SD ) ( t | SD ) (c5 | D | t | SD);"
+                 +"progMaj = ( T | t ) ( D ) (c5 | SD);"
+                 +"progMaj = (c5 | Dm | SD ) ( t | SD ) ( t | SD);"
+                 +"progMaj = ( D ) ( T | SD ) (D | t | T);"
+                 +"c5 = (iii vi ii) | c5;"
+                 +"c5 = (vi ii) | c5;"
+                 +"c5 = IV viio I;"
+                 +"c5 = IV viio ii V;"
+                 +"c5m = iio i;"
+                 +"c5m = bIII bVI iio v i;"
+                 +"c5m = bVI iio v i;"
+                 +"c5m = i iv v i;"
+                 +"c5m = iv bVII bIII v i;"
                  +"T = I | Imaj7;"
-                 +"t = iii | iii-7 | vi | vi-7;"
-                 +"SD = IV | IVmaj7 | ii | ii-7;"
-                 +"D = V | V7 | viio | viio7;"
-                 +"progMin = (Tm | tm | Dm | SDm ) (Tm | tm | SDm ) (Dm | tm | SDm) Tm;"
-                 +"Tm = i | i-7;"
-                 +"tm = bIII | bIIImaj7 | bVI | bVImaj7;"
-                 +"SDm = iv | iv-7 | iio | ii-7b5;"
-                 +"Dm = v | v-7 | bVII | bVIImaj7;"
+                 +"t = iii | vi;"
+                 +"SD = IV | ii;"
+                 +"D = V | V7 | viio;"
+                 +"progMin = (Tm | tm | Dm | SDm ) (c5m | Tm | tm | SDm ) (Dm | tm | SDm) (Tm|tm);"
+                 +"progMin = ( Dm | SDm ) ( tm | SDm ) (c5m | Dm | tm | SDm);"
+                 +"progMin = ( D | SDm ) ( tm | SDm ) (c5m | D | tm | SDm);"
+                 +"progMin = (Dm ) (Tm | SDm ) (Dm | tm | Tm);"
+                 +"Tm = i;"
+                 +"tm = bIII | bVI;"
+                 +"SDm = iv | iio;"
+                 +"Dm = v | bVII;"
                  +"progMod = (T | Tm | t | tm | D | Dm | SD | SDm)"
                            +"(T | Tm | t | tm | SD | SDm)"
                            +"(D | Dm | t | tm | SD | SDm) (T | Tm);"
@@ -68,18 +84,18 @@ public class main{
   System.out.println("random: " + t4.genRandom("poem", 5));
 
   CFG t5 = new CFG(test5);
-  // for(;;){
-  //  system.out.println("random: " + t5.genRandom("verse", 7));
-  //  if(!io.input().isempty()) system.exit(0);
-  // }
+  for(;;){
+   System.out.println("random: " + t5.genRandom("verse", 7));
+   if(!io.input().isEmpty()) System.exit(0);
+  }
 
   // Lyrics poem = new Limerick(new URLDataSource("https://www.gnu.org/licenses/gpl-3.0.txt"));
-  Limerick poem = new Limerick(new FileDataSource("/home/allfre2/a.txt"));
-  String p = poem.generate();
-  for(String s: p.split("\n")){
-    System.out.println(t5.genRandom("verse",7));
-    System.out.println(s);
-  }
+  // Limerick poem = new Limerick(new FileDataSource("/home/allfre2/a.txt"));
+  // String p = poem.generate();
+  // for(String s: p.split("\n")){
+  //   System.out.println(t5.genRandom("verse",7));
+  //   System.out.println(s);
+  // }
   // System.out.println(poem.generate() + "\n");
   // System.out.println(poem.generate() + "\n");
   // System.out.println(poem.generate() + "\n");  
