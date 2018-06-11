@@ -53,6 +53,14 @@ public class dummy2{
    +"Wl = (Dl | SDl) ( t);"
    +"SDl = #ivo | II;"
    +"Dl = V | vii;"
+   // Modal Interchange
+   +"modalx = Wmx Wmx;"
+   +"Wmx = (tmx) (Dmx | SDmx);"
+   +"Wmx = (Dmx | SDmx) (T | tmx);"
+   +"Tmx = I | i;"
+   +"tmx = iii | iiio | bIII | vi;"
+   +"SDmx = IV | iv | ii | bII;"
+   +"Dmx = V | v | V7 | bII7 | viio;"
  };
 
  static final String[] modes = {"major", "minor"};//, "dorian", "frygian", "mixo", "lydian"};
@@ -70,7 +78,7 @@ public class dummy2{
        String p = poem.generate();
        for(String s: p.split("\n")){
        String mode = modes[rnd.nextInt(modes.length)];
-         System.out.println(c.genRandom("major",8));
+         System.out.println(c.genRandom("modalx",8));
          // System.out.println(c.genRandom(mode,8));
          System.out.println(s);
        }
