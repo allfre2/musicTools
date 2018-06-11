@@ -19,19 +19,55 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
   </properties>
+
   <build>
-      <plugins>
-          <plugin>
-              <groupId>io.takari.maven.plugins</groupId>
-              <artifactId>takari-lifecycle-plugin</artifactId>
-              <version>1.10.2</version>
-              <extensions>true</extensions>
-              <configuration>
-                  <source>1.8</source>
-                  <target>1.8</target>
-                  <compilerId>jdt</compilerId>
-              </configuration>
-          </plugin>
-      </plugins>
+   <plugins>
+     <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <version>3.3</version>
+      <configuration>
+       <compilerVersion>1.8</compilerVersion>
+       <source>1.8</source>
+       <target>1.8</target>
+       <useIncrementalCompilation>true</useIncrementalCompilation>
+      </configuration>
+     </plugin> 
+   <!--plugin>
+    <groupId>io.takari.maven.plugins</groupId>
+    <artifactId>takari-lifecycle-plugin</artifactId>
+    <version>1.10.2</version>
+    <extensions>true</extensions>
+    <configuration>
+     <source>1.8</source>
+     <target>1.8</target>
+     <compilerId>jdt</compilerId>
+    </configuration>
+   </plugin-->
+   <!--plugin>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <configuration>
+     <source>1.8</source>
+     <target>1.8</target>
+     <compilerArgument>-proc:none</compilerArgument>
+    </configuration>
+   </plugin>
+   <plugin>
+    <groupId>org.bsc.maven</groupId>
+    <artifactId>maven-processor-plugin</artifactId>
+    <version>2.2.4</version>
+    <executions>
+     <execution>
+      <id>process</id>
+      <goals>
+       <goal>process</goal>
+      </goals>
+      <phase>process-sources</phase>
+     </execution>
+    </executions>
+   </plugin-->
+   </plugins> 
+  
   </build>
+
 </project>
