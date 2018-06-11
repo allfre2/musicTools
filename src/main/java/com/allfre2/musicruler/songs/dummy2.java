@@ -5,21 +5,15 @@ import com.allfre2.musicruler.tools.io;
 public class dummy2{
     
  public static final String[] cfgs = {
- 	"verse = prog | (prog | ^);"
-   +"prog = chord | (chord | ^);"
-   +"chord = 1;"
-   +"chord = 2;"
-   +"chord = 3;"
-   +"chord = 4;"
-   +"chord = 5;"
-   +"chord = 6;"
-   +"chord = 7;"
-   +"1 = I (V 5) | (V7 5) | (iii 3) | (vi 6) | (ii 2) | (viio 7) | (IV 4);"
-   +"2 = ii (V 5) | (V7 5) | (IV 4) | (bII7 (2 | 5)) | (vi 6) | (viio 7);"
-   +"3 = iii (vi 6) | (V 5) | (V7 5) | (I 1);"
-   +"4 = IV (V 5) | (V7 5) | (viio 7) | (ii 2);"
-   +"5 = (V | V7) (I 1)| (iii 3) | (vi 6) | (viio 7);"
-   +"6 = vi (IV 4) | (I 1) | (iii 3) | (V 5);"
+   "verse = chord;"
+   +"chord = 1 | 2 | 3 | 4 | 5 | 6 | 7;"
+   +"1 = I  5 | 3 | 6 | 2 | 7 | 4;"
+   +"2 = (ii (5 | 4 | 6 | 7)) | (bII7 5 );"
+   +"3 = iii 6 | 5 | 1 | 7;"
+   +"4 = IV 5 | 7 | 2 | 6;"
+   +"5 = (V | V7 | bII7) 1 | 3 | 6 | 7;"
+   +"6 = vi 4 | 1 | 3 | 5;"
+   +"7 = (viio | bVII) 1 | 5 | 3;"
  };
 
  public static void main(String[] args){
