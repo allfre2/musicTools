@@ -20,7 +20,7 @@ public class CFG{
     public static final String Space = " ";
     public static final String Empty = "^"; // To make optional rules ???
     public static final String λ = "";
-    public static final String Exp = λ;
+    public static final String Exp = "x";
 
     public final Random rnd = new Random();
 
@@ -327,7 +327,7 @@ public class CFG{
         postfix = ")";
        }
 
-       str = prefix+getSymbol()+type;
+       str = prefix+getSymbol()+(type == Exp ? "" : type);
 
        if(children != null && !children.isEmpty())
         for(Node node: children)
