@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 
+/**
+ * An implementation of the concept of chord conforming to the NoteCollection interface.
+ * @see NoteCollection
+ */
 public abstract class Chord extends NoteCollection{
 
  public List<NoteI> Overtones(){
@@ -16,18 +20,35 @@ public abstract class Chord extends NoteCollection{
    return new ArrayList<NoteI>(overtones);
  }
 
+/**
+ * @param b the chord to count common overtones with.
+ * @return returns the number of common overtones between the chord
+ * and the argument chord.
+ */
  public int commonOvertones(Chord b){
  	List<NoteI> common = new ArrayList<>(Overtones());
  	common.retainAll(b.Overtones());
  	return common.size();
  }
 
+/**
+ * @param b the chord to count common notes with.
+ * @return returns the number of common notes between the chord
+ * and the argument chord.
+ */
  public int commonNotes(Chord b){
  	List<NoteI> common = new ArrayList<>(notes);
  	common.retainAll(b.getNotes());
   return common.size();
  }
 
+ /**
+ * @param s the scale that the chord will be named relative to.
+ * @return returns a string in roman numerals with some modifiers like
+ * b, #, 7, -7, located in the {@link Symbols} class that describe
+ * the degree, the mode (minor, mayor, etc) and other qualities of the
+ * current chord.
+ */
  public String name(Scale s){
  	NoteI root = s.degree(1);
  	int deg = s.degreeOf(notes.get(0));

@@ -5,6 +5,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.function.Function;
 
+/**
+ * An implementation of the concept of scale conforming to the NoteCollection interface.
+ * <p>
+ * Implements various methods that are useful when dealing with scales
+ * get the note corresponding to a given degree of the scale,
+ * get the degree of a given note,
+ * get a fully build diatonic {@link Chord} corresponding to a given degree. 
+ * @see NoteCollection
+ */
 public abstract class Scale extends NoteCollection{
 
  public NoteI degree(int deg){
@@ -32,11 +41,25 @@ public abstract class Scale extends NoteCollection{
      }));
  }
 
+/**
+ * Uses the NoteCollectionFactory class to build a chord from
+ * a list of notes.
+ * @param deg the degree of the diatonic chord that is wanted.
+ * @return returns a diatonic {@link Chord} corresponding to the given
+ * degree as an integer argument.  
+ */
  public Chord chord(int deg){
  	List<NoteI> triad = triads(deg);
    return NoteCollectionFactory.makeChordFromList(triad);
  }
 
+/**
+ * Uses the NoteCollectionFactory class to build a chord from
+ * a list of notes.
+ * @param deg the degree of the diatonic 7 chord that is wanted.
+ * @return returns a diatonic 7 {@link Chord} corresponding to the given
+ * degree as an integer argument.  
+ */
  public Chord chord7(int deg){
  	List<NoteI> triad = triads(deg);
  	triad.add(degree(deg+6));
@@ -49,6 +72,9 @@ public abstract class Scale extends NoteCollection{
    return NoteCollectionFactory.makeChordFromList(triad);
  }
 
+/**
+ * @return returns a list of all the diatonic chords in the scale.
+ */
  public List<Chord> chords(){
  	return chords(0);
  }

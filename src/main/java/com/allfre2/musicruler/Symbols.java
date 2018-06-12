@@ -2,6 +2,11 @@ package com.allfre2.musicruler;
 
 import java.util.HashMap;
 
+/**
+ * This class contains a set of symbols that are useful for
+ * naming and representing various musical ideas, intervals,
+ * scales, chords, etc ...
+ */
 public class Symbols{
     public static final String natural = "♮";
     public static final String sharp = "♯";

@@ -16,11 +16,20 @@ public class Note implements NoteI{
  protected int noteIndex;
  protected int altIndex;
 
+/**
+ * Class Constructor
+ * @param  note A String representation of a musical note
+ */
  public Note(String note){
     this(note.substring(0,1).toLowerCase(),
          note.substring(1));
  }
 
+/**
+ * Class Constructor
+ * @param  note A String representation of a musical note minus the alterations.
+ * @param  alt A String representation of an alteration 𝄪, ♯, ♮, ♭, 𝄫.
+ */
  public Note(String note, String alt){
   useUnicode = true;
   upperCase = true;
@@ -37,14 +46,23 @@ public class Note implements NoteI{
   }
  }
 
+ /**
+ * @see {@link NoteI}
+ */
  public int getNoteIndex(){
   return this.noteIndex;
  }
 
+ /**
+ * @see {@link NoteI}
+ */
  public int getAltIndex(){
   return this.altIndex;
  }
 
+ /**
+ * @see {@link NoteI}
+ */
  public List<NoteI> Overtones(){
    List<NoteI> overtones = new ArrayList<NoteI>();
    overtones.add(major(1));
@@ -59,6 +77,9 @@ public class Note implements NoteI{
    return overtones;
  }
 
+ /**
+ * @see {@link NoteI}
+ */
  public int semitones(NoteI note){
   int dist = distance(note.getNoteIndex());
   dist = dist < 0 ? dist + 12 : dist;
@@ -66,6 +87,9 @@ public class Note implements NoteI{
   return dist % 12;
  }
 
+ /**
+ * @see {@link NoteI}
+ */
  public boolean isEnharmonic(NoteI note){
   int semitones = semitones(note);
   return semitones == 0;
@@ -116,6 +140,9 @@ public class Note implements NoteI{
  }
 
  // Helper functions
+ /**
+ * @return returns a randomly generated <code>NoteI</code>.
+ */
  public static NoteI random(){
   Random rnd = new Random();
   int note = rnd.nextInt(Notes.length);

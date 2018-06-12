@@ -3,14 +3,30 @@ package com.allfre2.musicruler;
 import java.util.List;
 import java.util.TreeSet;
 
+/**
+ * An abstract class to provide a basic set of capabilities to classes
+ * implementing the concept of a collection of notes.
+ * <p>
+ * Chords, Scales, and melodies can be thought of as a collection of notes.
+ * This "interface" makes the implementation oof those concepts a little easier
+ * and enables a polimorphic way of treating all of them.
+ */
 public abstract class NoteCollection{
     
  protected List<NoteI> notes;
 
+ /**
+ * @return an int corresponding to the size of the collection that holds the
+ * <code>NoteI</code> objects.
+ */
  public int size(){
   return notes.size();
  }
 
+ /**
+ * @return a list of <code>NoteI</code> containing all the notes in underlying collection.
+ * <code>NoteI</code> objects.
+ */
  public final List<NoteI> getNotes(){
   return notes;
  }
@@ -30,6 +46,10 @@ public abstract class NoteCollection{
  	return notes.toString();
  }
 
+ /**
+ * @return uses {@link NoteCollectionFactory} class to return a String with
+ * a descriptive name of the {@link Chord}, {@link Scale}, etc ...
+ */
  public String name(){
  	return notes.get(0) + NoteCollectionFactory.getSymbol(this);
  }
