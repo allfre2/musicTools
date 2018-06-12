@@ -235,7 +235,7 @@ public class CFG{
    /**
     *
     * Class Node.
-    * Implements a parse tree.
+    * Implements a simple parse tree.
     * 
     */
 

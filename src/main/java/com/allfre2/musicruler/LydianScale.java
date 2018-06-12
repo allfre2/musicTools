@@ -3,6 +3,13 @@ package com.allfre2.musicruler;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Implements the Scale abstract class and builds a Lydian scale.
+ * The Lydian scale pattern is:
+ * W W W H W W
+ * H = Half Tone.
+ * W = Whole Tone.
+ */
 public class LydianScale extends Scale{
 
     public LydianScale (NoteI root){

@@ -3,6 +3,13 @@ package com.allfre2.musicruler;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Implements the Scale abstract class and builds a Major scale.
+ * The Major scale pattern is:
+ * W W H W W W
+ * H = Half Tone.
+ * W = Whole Tone.
+ */
 public class MajorScale extends Scale{
 
     public MajorScale (NoteI root){

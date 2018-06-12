@@ -18,14 +18,29 @@ import javax.swing.text.html.parser.Parser;
 import javax.swing.text.html.parser.ParserDelegator;
 //
 
+/**
+ * A DataSource implementation that fetches the text form a URL.
+ * @see DataSource
+ */
 public class URLDataSource extends DataSource{
     
+   /**
+    * Class Constructor.
+    * Initializes the tokens field by fetching the data from the URL
+    * and passing it to the {@link URLDataSource#getData} method.
+    * @param url The String of the url to be downloaded.
+    */
 	public URLDataSource (String url){
 	 tokenize(getData(url));
 	}
 
     // TODO parse HTML, Json and others
     // For now just plain text
+   /**
+    * Downloads the url by passing it to the URL classes constructor
+    * and calling the openStream method.
+    * @param url The String of the url to be downloaded.
+    */
 	protected String getData(String url){
 
 	 String data = "";

@@ -3,6 +3,13 @@ package com.allfre2.musicruler;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Implements the Scale abstract class and builds a Dorian scale.
+ * The Dorian scale pattern is:
+ * W H W W W H
+ * H = Half Tone.
+ * W = Whole Tone.
+ */
 public class DorianScale extends Scale{
 
     public DorianScale (NoteI root){

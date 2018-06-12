@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.stream.Collectors;
 import java.util.Random;
 
+/**
+ * Implements a generic Markov Table.
+ */
 public abstract class Markov<T>{
 
   protected Random rnd = new Random();

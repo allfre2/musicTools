@@ -3,6 +3,13 @@ package com.allfre2.musicruler;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Implements the Scale abstract class and builds a Locrian scale.
+ * The Locrian scale pattern is:
+ * H W W H W W
+ * H = Half Tone.
+ * W = Whole Tone.
+ */
 public class LocrianScale extends Scale{
 
     public LocrianScale (NoteI root){

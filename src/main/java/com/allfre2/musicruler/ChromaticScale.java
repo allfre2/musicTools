@@ -3,6 +3,13 @@ package com.allfre2.musicruler;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Implements the Scale abstract class and builds a Chromatic scale.
+ * The chromatic scale pattern is:
+ * H H H H H H H H H H H
+ * H = Half Tone.
+ * W = Whole Tone.
+ */
 public class ChromaticScale extends Scale{
     
 	public ChromaticScale (NoteI root){
