@@ -148,6 +148,8 @@ public class CFG{
     }
 
    /**
+    * Scans through the cfg String and splits it into a list of String tokens.
+    * It builds a List of tokens for each production. (Line containing an = operator).
     * @param cfg The context free grammar String.
     * @return returns a List of Lists of Strings that correspond to the tokens
     * extracted from the cfg String passed to the constructor.
@@ -195,6 +197,8 @@ public class CFG{
     }
 
    /**
+    * Recursively generates a String belonging to the grammar.
+    * It start from a {@link CFG.Node} object previously created by the parser.
     * @param node The node object that is going to be expanded by recursively
     * calling the method on it's children nodes.
     * @return returns a randomly generated String that fits the already parsed grammar.
@@ -271,6 +275,7 @@ public class CFG{
 
      /**
       * Class Contructor.
+      * Calls the {@link Node#parse} method to build the parse tree for each production.
       * @param  production A List of String (tokens) that make a production. 
       * @throws InvalidCFGException
       */
@@ -283,6 +288,7 @@ public class CFG{
       }
 
      /**
+      * Used to get the terminal or non-terminal symbol representing the node.
       * @return returns the Symbol String for this node.
       */
       public String getSymbol(){
@@ -290,6 +296,7 @@ public class CFG{
       }
 
      /**
+      * Used to get the type of the node.
       * @return returns the type field of the node.
       */
       public String getType(){
@@ -297,6 +304,7 @@ public class CFG{
       }
 
      /**
+      * Used to get the children nodes of this node.
       * @return Returns the List of children nodes of this node.
       */
       public List<Node> getChildren(){
@@ -304,6 +312,8 @@ public class CFG{
       }
 
      /**
+      * A recursive, hand written parser, that builds a parse tree
+      * from a List of String tokens.
       * @return Returns Node that acts as the root of a parse
       * tree corresponding to the tokens passed as argument.
       * @param tokens The List of Strings (tokens) to be parsed.
@@ -346,6 +356,8 @@ public class CFG{
       }
 
      /**
+      * This method parses a List of Node objects and collapses
+      * them into a single node if there are or operator in between.
       * @param nodes A List of Node that is to be parsed.
       * @return Returns the result of parsing a List of Node that
       * contains one or several Or operators
@@ -390,6 +402,7 @@ public class CFG{
       }
 
      /**
+      * Find matching parentesis to parse groups of tokens.
       * @param tokens List of String (token).
       * @param i the index of the opening parentesis.
       * @return Returns the index of the closing parentesis that matches
@@ -417,6 +430,8 @@ public class CFG{
       }
 
      /**
+      * Used to get a text based representation of a node's parse tree.
+      * The Syntax is polish notation similar to that of lisp.
       * @return Returns a String of the node in prefix/polish notation.
       */
       public String getStr(){

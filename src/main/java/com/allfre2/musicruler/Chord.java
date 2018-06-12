@@ -11,6 +11,10 @@ import java.util.LinkedHashSet;
  */
 public abstract class Chord extends NoteCollection{
 
+/**
+ * @return Returns a List of NoteI containing the set of overtones
+ * produced by playing all the notes in the chord.
+ */
  public List<NoteI> Overtones(){
  	LinkedHashSet<NoteI> overtones = new LinkedHashSet<>();
  	for (NoteI note: notes)

@@ -17,15 +17,14 @@ public abstract class NoteCollection{
 
  /**
  * @return an int corresponding to the size of the collection that holds the
- * <code>NoteI</code> objects.
+ * NoteI objects.
  */
  public int size(){
   return notes.size();
  }
 
  /**
- * @return a list of <code>NoteI</code> containing all the notes in underlying collection.
- * <code>NoteI</code> objects.
+ * @return a list of NoteI containing all the notes in underlying collection.
  */
  public final List<NoteI> getNotes(){
   return notes;

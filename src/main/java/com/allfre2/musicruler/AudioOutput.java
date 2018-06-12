@@ -2,6 +2,11 @@ package com.allfre2.musicruler;
 
 import java.util.List;
 
+/**
+ * An Interface to be implemented by audio packages to play notes and chords.
+ * <p>
+ * // Talk about the fields...
+ */
 public abstract class AudioOutput{
 
     protected String instrument;
