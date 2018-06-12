@@ -24,9 +24,9 @@ public class dummy2{
    +"w = (Tm | tm) (Dm | SDm);"
    +"w = (Dm | SDm) (Tm| tm);"
    +"Tm = i;"
-   +"tm = III | VI;"
+   +"tm = bIII | bVI;"
    +"SDm = iv | iio;"
-   +"Dm = v | VII;"
+   +"Dm = v | bVII;"
    //Mixolydian
    // +"mixo = Wx Wx Wx ;"
    +"mixo = Wx Wx ;"
@@ -56,14 +56,14 @@ public class dummy2{
    // Modal Interchange
    +"modalx = Wmx Wmx;"
    +"Wmx = (tmx) (Dmx | SDmx);"
-   +"Wmx = (Dmx | SDmx) (T | tmx);"
+   +"Wmx = (Dmx | SDmx) (Tmx);"
    +"Tmx = I | i;"
-   +"tmx = iii | iiio | bIII | vi;"
-   +"SDmx = IV | iv | ii | bII;"
+   +"tmx = iii | iiio | bIII | vi | (VII7 ii);"
+   +"SDmx = IV | iv | ii | bII | (IV7 bVII) | (II7 (v | V));"
    +"Dmx = V | v | V7 | bII7 | viio;"
  };
 
- static final String[] modes = {"major", "minor"};//, "dorian", "frygian", "mixo", "lydian"};
+ static final String[] modes = {"major", "minor", "modalx"};//, "dorian", "frygian", "mixo", "lydian"};
 
  public static void main(String[] args){
    Limerick poem = new Limerick(new FileDataSource("/home/allfre2/a.txt"));
@@ -76,9 +76,9 @@ public class dummy2{
   	 for(;;){
   	 	// System.out.println(c.genRandom("verse", 8) + "\n\n");
        String p = poem.generate();
-       for(String s: p.split("\n")){
        String mode = modes[rnd.nextInt(modes.length)];
-         System.out.println(c.genRandom("modalx",8));
+       for(String s: p.split("\n")){
+         System.out.println(c.genRandom(mode,8));
          // System.out.println(c.genRandom(mode,8));
          System.out.println(s);
        }
