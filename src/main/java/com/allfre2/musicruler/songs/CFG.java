@@ -116,7 +116,7 @@ public class CFG{
 
    /**
     * Removes extra whitespace, newlines. Separates operators from
-    * identifiers to make the lexer's job easier.
+    * identifiers to make the lexers job easier.
     * @param cfg The context free grammar string to be formated.
     * @return returns the formated cfg ready for the lexer method.
     */
