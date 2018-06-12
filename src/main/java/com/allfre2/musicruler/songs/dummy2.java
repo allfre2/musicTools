@@ -59,8 +59,13 @@ public class dummy2{
    +"Wmx = (Dmx | SDmx) (Tmx);"
    +"Tmx = I | i;"
    +"tmx = iii | iiio | bIII | vi | (VII7 ii);"
+   +"tmx = V7/iii iii;"
+   +"tmx = V7/vi vi;"
+   +"SDmx = V7/ii ii;"
+   +"SDmx = V7/IV IV;"
    +"SDmx = IV | iv | ii | bII | (IV7 bVII) | (II7 (v | V));"
    +"Dmx = V | v | V7 | bII7 | viio;"
+   +"Dmx = V7/V V;"
  };
 
  static final String[] modes = {"major", "minor", "modalx"};//, "dorian", "frygian", "mixo", "lydian"};
