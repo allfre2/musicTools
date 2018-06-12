@@ -8,6 +8,15 @@ import java.util.Stack;
 import java.util.HashMap;
 import java.util.Random;
 
+/**
+ * Implements a simple lexer and parser for context free grammars.
+ * <p>
+ *  It has or (|), asingment (=), parentesis and semicolon operators
+ * for writting CFGs.
+ * It is intended to be used with {@link Markov<T>} to generate
+ * text for certain types of poem and with {@link AbstractKey} implementations
+ * to generate harmony for songs.
+ */
 public class CFG{
     
     public static final String Identifier = "^\\w+$";
@@ -26,6 +35,13 @@ public class CFG{
 
     protected HashMap<String, List<Node>> grammar;
 
+ /**
+  * Class Constructor
+  * @param cfg specifies a context free grammar according to the syntax
+  * defined above.
+  * @throws InvalidCFGException
+  * @see InvalidCFGException
+  */
   public CFG(String cfg) throws InvalidCFGException{
 
      grammar = new HashMap<>();
@@ -59,6 +75,13 @@ public class CFG{
      return token.matches(Identifier);
     }
 
+   /**
+    * Validates the produtions in the grammar. Checks for unbalanced parentesis,
+    * faulty or expressions and foreign tokens.
+    * @param  productions a List of Lists of Strings containing the tokens
+    * extrated with the lexer method.
+    * @throws InvalidCFGException
+    */
     public void validate(List<List<String>> productions)
      throws InvalidCFGException
     {
@@ -91,6 +114,12 @@ public class CFG{
       }
     }
 
+   /**
+    * Removes extra whitespace, newlines. Separates operators from
+    * identifiers to make the lexer's job easier.
+    * @param cfg The context free grammar string to be formated.
+    * @return returns the formated cfg ready for the lexer method.
+    */
     public String format(String cfg){
       String[] operators =
       {
@@ -118,6 +147,11 @@ public class CFG{
       return cfg;
     }
 
+   /**
+    * @param cfg The context free grammar String.
+    * @return returns a List of Lists of Strings that correspond to the tokens
+    * extracted from the cfg String passed to the constructor.
+    */
     public List<List<String>> lexer(String cfg){
      List<String> lines = Arrays.asList(cfg.split(End));
      return
@@ -130,6 +164,14 @@ public class CFG{
            .collect(Collectors.toList());
     }
 
+   /**
+    * Recursively generates a String belonging to the grammar.
+    * It first fetches a token that matches the start symbol from the
+    * parse tree and calls genRandom with a Node object as argument.
+    * @param start The start symbol for production.
+    * @param depth The maximum number of recursive calls to be made.
+    * @return returns a randomly generated String that fits the already parsed grammar.
+    */
     public String genRandom(String start, int depth){
 
      if(depth < 1) return "";
@@ -152,6 +194,11 @@ public class CFG{
      return sentence;
     }
 
+   /**
+    * @param node The node object that is going to be expanded by recursively
+    * calling the method on it's children nodes.
+    * @return returns a randomly generated String that fits the already parsed grammar.
+    */
     public String genRandom(Node node){
      List<Node> children = node.getChildren();
 
@@ -169,6 +216,9 @@ public class CFG{
      return str;
     }
 
+   /**
+    * Prints the set of productions that conform the already parsed grammar.
+    */
     public void printGrammar(){
      System.out.println("\n\n== Complete Parsed Grammar ==\n");
      for(String key: grammar.keySet())
@@ -178,10 +228,12 @@ public class CFG{
      System.out.println();
     }
 
-    //     
-    // Class Node
-    // Implements a simple parser.
-    //
+   /**
+    *
+    * Class Node.
+    * Implements a parse tree.
+    * 
+    */
 
     protected class Node{
 
@@ -189,18 +241,39 @@ public class CFG{
       protected String symbol;
       protected List<Node> children;
   
+     /**
+      * Class Contructor.
+      * @param terminal A String containing a terminal token.
+      */
       public Node(String terminal){
        this.type = λ;
        this.symbol = terminal;
        this.children = null;
       }
-
+  
+     /**
+      * Class Contructor.
+      * @param type Specifies the type of the Node to be created.
+      * Types are Exp (Expresion), Or (Logical or expresion),
+      * OpenParen (An expression enclosed in parentesis),
+      * Empty (A way of expecifying a node that doesn't evaluate to nothing),
+      * λ (An empty String, equivalent to `Empty`).
+      * @param symbol Contains a String corresponding to an identifier.
+      * In Nodes that contains a group of child nodes that must be evaluated
+      * against some operator (Or) it has the operators symbol.
+      * @param  children A list of child nodes.
+      */
       public Node(String type, String symbol, List<Node> children){
         this.type = type;
         this.symbol = symbol;
         this.children = children;
       }
 
+     /**
+      * Class Contructor.
+      * @param  production A List of String (tokens) that make a production. 
+      * @throws InvalidCFGException
+      */
       public Node(List<String> production) throws InvalidCFGException{
          this.type = Production;
          this.symbol = production.get(0);
@@ -209,18 +282,32 @@ public class CFG{
 
       }
 
+     /**
+      * @return returns the Symbol String for this node.
+      */
       public String getSymbol(){
        return symbol.equals(Empty) ? "" : symbol;
       }
 
+     /**
+      * @return returns the type field of the node.
+      */
       public String getType(){
        return type;
       }
 
+     /**
+      * @return Returns the List of children nodes of this node.
+      */
       public List<Node> getChildren(){
        return children;
       }
 
+     /**
+      * @return Returns Node that acts as the root of a parse
+      * tree corresponding to the tokens passed as argument.
+      * @param tokens The List of Strings (tokens) to be parsed.
+      */
       Node parse(List<String> tokens)
        throws InvalidCFGException
       {
@@ -258,6 +345,11 @@ public class CFG{
            return new Node(nodeType, λ, nodes);
       }
 
+     /**
+      * @param nodes A List of Node that is to be parsed.
+      * @return Returns the result of parsing a List of Node that
+      * contains one or several Or operators
+      */
       Node parseOrExpr(List<Node> nodes)
        throws InvalidCFGException
       {
@@ -297,6 +389,12 @@ public class CFG{
           return finalNodes.pop();
       }
 
+     /**
+      * @param tokens List of String (token).
+      * @param i the index of the opening parentesis.
+      * @return Returns the index of the closing parentesis that matches
+      * the i parameter in the tokens List.
+      */
       int findMatch(List<String> tokens, int i){
         Stack<String> paren = new Stack<>();
         paren.push(tokens.get(i));
@@ -318,7 +416,9 @@ public class CFG{
        return i-1;
       }
 
-      // Get a String of the node in prefix/polish notation
+     /**
+      * @return Returns a String of the node in prefix/polish notation.
+      */
       public String getStr(){
        String str, prefix = "", postfix = "";
 
