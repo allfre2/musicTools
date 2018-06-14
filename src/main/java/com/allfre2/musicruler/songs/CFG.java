@@ -406,27 +406,24 @@ public class CFG{
       * @param tokens List of String (token).
       * @param i the index of the opening parentesis.
       * @return Returns the index of the closing parentesis that matches
-      * the i parameter in the tokens List.
+      * the parentesis at index i in the tokens List.
       */
       int findMatch(List<String> tokens, int i){
         Stack<String> paren = new Stack<>();
         paren.push(tokens.get(i));
 
-        while(++i < tokens.size() && !paren.isEmpty()){
+         while(++i < tokens.size() && !paren.isEmpty()){
+ 
+           String token = tokens.get(i);
+ 
+           if(token.equals(OpenParen))
+             paren.push(OpenParen);
+ 
+           if(token.equals(CloseParen))
+             paren.pop();
+         }
 
-          String token = tokens.get(i);
-
-          if(token.equals(OpenParen))
-            paren.push(OpenParen);
-          else if(token.equals(CloseParen)){
-            if(paren.isEmpty()){
-             i = 0;
-             break;
-            }
-            paren.pop();
-          }
-        }
-       return i-1;
+       return paren.isEmpty() ? i-1 : -1;
       }
 
      /**
