@@ -18,7 +18,7 @@ import java.util.Random;
  * to generate harmony for songs.
  */
 public class CFG{
-    
+
     public static final String Identifier = "^\\w+$";
 
     public static final String Production = "=";
@@ -53,7 +53,7 @@ public class CFG{
      validate(productions);
 
      List<Node> nodes;
-     
+
      for(List<String> production: productions){
 
       Node node = new Node(production);
@@ -88,7 +88,7 @@ public class CFG{
       for(List<String> production: productions){
 
         int line, index;
-        
+
         line = productions.indexOf(production);
 
        if(production.size() < 3 || !(isIdentifier(production.get(0))) ||
@@ -126,7 +126,7 @@ public class CFG{
        Production, "\\"+Or, "\\"+OpenParen,
        "\\"+CloseParen, Empty, End
       };
-                       
+
       cfg = cfg.replaceAll("\n+", Space);
       cfg = cfg.replaceAll(End + "+", End);
 
@@ -236,7 +236,7 @@ public class CFG{
     *
     * Class Node.
     * Implements a simple parse tree.
-    * 
+    *
     */
 
     protected class Node{
@@ -244,7 +244,7 @@ public class CFG{
       protected String type;
       protected String symbol;
       protected List<Node> children;
-  
+
      /**
       * Class Contructor.
       * @param terminal A String containing a terminal token.
@@ -254,7 +254,7 @@ public class CFG{
        this.symbol = terminal;
        this.children = null;
       }
-  
+
      /**
       * Class Contructor.
       * @param type Specifies the type of the Node to be created.
@@ -276,7 +276,7 @@ public class CFG{
      /**
       * Class Contructor.
       * Calls the {@link Node#parse} method to build the parse tree for each production.
-      * @param  production A List of String (tokens) that make a production. 
+      * @param  production A List of String (tokens) that make a production.
       * @throws InvalidCFGException
       */
       public Node(List<String> production) throws InvalidCFGException{
@@ -327,7 +327,7 @@ public class CFG{
             nodeType = OpenParen;
 
         List<Node> nodes = new ArrayList<>();
-        
+
         for(int i = 0; i < tokens.size(); ++i){
 
          String token = tokens.get(i);
@@ -338,7 +338,7 @@ public class CFG{
           if(end < 0 || (i+1 >= end))
            throw
             new InvalidCFGException("Unbalanced or empty `" + OpenParen + "` expression");
- 
+
           nodes.add(parse(tokens.subList(i+1,end)));
           i = end;
 
@@ -413,12 +413,12 @@ public class CFG{
         paren.push(tokens.get(i));
 
          while(++i < tokens.size() && !paren.isEmpty()){
- 
+
            String token = tokens.get(i);
- 
+
            if(token.equals(OpenParen))
              paren.push(OpenParen);
- 
+
            if(token.equals(CloseParen))
              paren.pop();
          }
@@ -448,7 +448,7 @@ public class CFG{
 
         return str + postfix;
       }
-  
+
       @Override
       public int hashCode(){
        return getSymbol().hashCode();

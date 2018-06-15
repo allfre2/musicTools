@@ -64,7 +64,7 @@ public abstract class Markov<T>{
 
     if(markovTable == null)
      markovTable = new ArrayList<>();
-    
+
     if(markovTable.size() < order)
       for(int i = markovTable.size(); i < order; ++i)
         markovTable.add(new HashMap<>());
@@ -164,7 +164,7 @@ public abstract class Markov<T>{
 
    int o = 1;
    for(int i = 0; i < len; ++i){
-    
+
     adj = markovTable.get(o-1).get(window);
 
     // Token is not present ... what to do ...
@@ -180,7 +180,7 @@ public abstract class Markov<T>{
     }
 
     if(keyTokens != null && !keyTokens.isEmpty()){
-     List<Token<T>> adjKeyTokens = new ArrayList<>(keyTokens); 
+     List<Token<T>> adjKeyTokens = new ArrayList<>(keyTokens);
      adjKeyTokens.retainAll(adj);
      if(!adjKeyTokens.isEmpty()) adj = adjKeyTokens;
     }
@@ -205,7 +205,7 @@ public abstract class Markov<T>{
     int i;
     for(int o = 1; o < order; ++o){
      HashMap<List<Token<T>>, List<Token<T>>> table = markovTable.get(o-1);
- 
+
      LinkedList<Token<T>> token = new LinkedList<>();
      List<Token<T>> adj;
 
@@ -217,7 +217,7 @@ public abstract class Markov<T>{
       for(;i < text.size()-o-1; ++i){
        if(table.containsKey(token)){
         adj = table.get(token);
-  
+
         if(adj.contains(text.get(i)))
           hits += 1;
        }

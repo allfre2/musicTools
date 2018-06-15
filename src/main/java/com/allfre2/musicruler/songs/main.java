@@ -6,34 +6,34 @@ public class main{
 
  public static void main(String[] args){
 
- 	String test = 
- 	 "A = b B | C A 5 (F-3-1 Z (R | E-0-0 x) s | o);" +
- 	 "F = C o;" +
- 	 "F-3-1 = F | R;" +
- 	 "R = 1 | 2 | 3 | 4;" +
- 	 "Z = R s (o (A | 0));" +
- 	 "x = > | <;" +
- 	 "o = 6 (o | E);" +
- 	 "E-0-0 = E-0-0;" +
- 	 "s = x x F;" +
- 	 "B = i;" +
- 	 "b = (r) | " + CFG.Empty + ";" +
- 	 "Z = u | (d d d);"; // fix mark node as a group, (parentesis)
+    String test =
+     "A = b B | C A 5 (F-3-1 Z (R | E-0-0 x) s | o);" +
+     "F = C o;" +
+     "F-3-1 = F | R;" +
+     "R = 1 | 2 | 3 | 4;" +
+     "Z = R s (o (A | 0));" +
+     "x = > | <;" +
+     "o = 6 (o | E);" +
+     "E-0-0 = E-0-0;" +
+     "s = x x F;" +
+     "B = i;" +
+     "b = (r) | " + CFG.Empty + ";" +
+     "Z = u | (d d d);"; // fix mark node as a group, (parentesis)
 
- 	String test2 = 
- 	 "phoneNumber = o area d d d - d d d d;" +
- 	 "o = 1 | ^;" +
- 	 "d = 0 | 1 | 2 |3 |4 |5 |6 |7 |8|9;" +
- 	 "area = 809 | 829 | 849;";
+    String test2 =
+     "phoneNumber = o area d d d - d d d d;" +
+     "o = 1 | ^;" +
+     "d = 0 | 1 | 2 |3 |4 |5 |6 |7 |8|9;" +
+     "area = 809 | 829 | 849;";
 
- 	String test3 = 
- 	 "prog = ( ( seq (((y)))) | chord) (chord | ^) T (prog |^);  " +
- 	 "chord = T | t | SD | D;" +
- 	 "seq = (T | t) (SD | D) (T | t | ^) (SD | D | ^);" +
- 	 "T = I | i | Imaj7 | i-7;" +
- 	 "t = iii | vi;" +
- 	 "SD = ii | ii-7 | IV | IVmaj7 | iv;" +
- 	 "D = V | v | V7 | viio ;";
+    String test3 =
+     "prog = ( ( seq (((y)))) | chord) (chord | ^) T (prog |^);  " +
+     "chord = T | t | SD | D;" +
+     "seq = (T | t) (SD | D) (T | t | ^) (SD | D | ^);" +
+     "T = I | i | Imaj7 | i-7;" +
+     "t = iii | vi;" +
+     "SD = ii | ii-7 | IV | IVmaj7 | iv;" +
+     "D = V | v | V7 | viio ;";
 
   String test4 = "poem = verse-1-23-23 nl verse-9-8-7 nl verse-2-23-5;";
 
@@ -98,9 +98,9 @@ public class main{
   // }
   // System.out.println(poem.generate() + "\n");
   // System.out.println(poem.generate() + "\n");
-  // System.out.println(poem.generate() + "\n");  
+  // System.out.println(poem.generate() + "\n");
   }catch(InvalidCFGException e){
-  	e.printStackTrace();
+    e.printStackTrace();
   }
  }
 }

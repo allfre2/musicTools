@@ -11,8 +11,8 @@ import java.util.ArrayList;
  * W = Whole Tone.
  */
 public class ChromaticScale extends Scale{
-    
-	public ChromaticScale (NoteI root){
+
+    public ChromaticScale (NoteI root){
      notes = new ArrayList<NoteI>();
      notes.add(root);
      notes.add(root.  aug(1));
@@ -26,5 +26,5 @@ public class ChromaticScale extends Scale{
      notes.add(root.major(6));
      notes.add(root. aug(6));
      notes.add(root.major(7));
-	}
+    }
 }

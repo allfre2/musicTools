@@ -181,7 +181,7 @@ public class KeyTest{
       Comparator<Chord> diff = (a, b) -> {
         return (a.Overtones().size() - a.commonOvertones(b))
               +(a.getNotes().size() - a.commonNotes(b));
-      }; 
+      };
        for(int i = 1; i < progression.size(); ++i){
         result += diff.compare(progression.get(i-1),
                                progression.get(i));

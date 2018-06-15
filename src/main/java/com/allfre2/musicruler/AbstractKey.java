@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public abstract class AbstractKey{
 
-	protected NoteI root;
+    protected NoteI root;
     protected Scale rootScale;
     protected List<Chord> chords;
     protected List<Chord> chords7;
@@ -22,7 +22,7 @@ public abstract class AbstractKey{
     * @return Returns the root field wich contains a the root note of the scale.
     * @see NoteI
     */
-	public final NoteI getRoot(){
+    public final NoteI getRoot(){
      return this.root;
     }
 
@@ -66,17 +66,17 @@ public abstract class AbstractKey{
 
      for(Chord chord: getTriads())
       if(chord.getNotes().contains(note))
-      	chordList.add(chord);
+        chordList.add(chord);
 
      for(Chord chord: get7Chords())
       if(chord.getNotes().contains(note))
-      	chordList.add(chord);
+        chordList.add(chord);
 
       return chordList;
     }
 
     @Override
      public String toString(){
-     	return getRootScale().name();
-     } 
+        return getRootScale().name();
+     }
 }

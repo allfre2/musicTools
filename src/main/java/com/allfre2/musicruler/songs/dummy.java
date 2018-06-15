@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 import java.util.LinkedList;
 
 public class dummy{
-    
+
  public static void main(String[] args){
    // URLDataSource.testing("https://en.wikipedia.org/wiki/Fur");
 

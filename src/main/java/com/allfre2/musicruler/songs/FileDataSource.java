@@ -11,21 +11,21 @@ import java.io.IOException;
  * @see DataSource
  */
 public class FileDataSource extends DataSource{
-    
+
  /**
   * Class Constructor.
   * @param path The path tothe file to be read.
   */
-	public FileDataSource (String path){
+    public FileDataSource (String path){
     tokenize(readFile(new File(path)));
-	}
+    }
 
  /**
   * Reads all lines from a file into a single string.
   * @param file File object.
   * @return All the lines in the file as a single String.
   */
-	protected String readFile(File file){
+    protected String readFile(File file){
      String lines = "";
      try{
 
@@ -34,8 +34,8 @@ public class FileDataSource extends DataSource{
        new FileReader(file)));
 
      }catch(IOException e){
-     	e.printStackTrace();
+        e.printStackTrace();
      }
      return lines;
-	}
+    }
 }

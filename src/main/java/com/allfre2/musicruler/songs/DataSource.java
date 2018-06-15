@@ -19,19 +19,19 @@ public abstract class DataSource{
  * @param data The String containing the source text.
  */
  protected void tokenize(String data){
-  	Scanner s = new Scanner(System.in);
+    Scanner s = new Scanner(System.in);
     data = data.replaceAll("[\n|\r\n]"," ");
     data = data.replaceAll("[ ]+"," ");
     data = data.replaceAll("\\W|[0-9]"," ");
- 
+
     tokens = new ArrayList<>();
- 
+
     for(String str: data.split(" ")){
      if(!str.isEmpty()){
       tokens.add(new Token<String>(str.toLowerCase()));
      }
     }
- } 
+ }
 
 /**
  * @return Returns a List {@link Token<String>} containing the tokens

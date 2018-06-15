@@ -4,12 +4,12 @@ import com.allfre2.musicruler.tools.io;
 import java.util.Random;
 
 public class dummy2{
-    
+
  public static final Random rnd = new Random();
 
  public static final String[] cfgs = {
- 	""
- 	//Major
+    ""
+    //Major
    // +"major = W W W ;"
    +"major = W W ;"
    +"W = (t) (D | SD);"
@@ -72,14 +72,14 @@ public class dummy2{
 
  public static void main(String[] args){
    Limerick poem = new Limerick(new FileDataSource("/home/allfre2/a.txt"));
- 	CFG c = null;
+    CFG c = null;
   for(String cfg: cfgs){
-  	try{
-  	 c = new CFG(cfg);
-  	}catch(Exception e){ e. printStackTrace(); }
-  	 c.printGrammar();
-  	 for(;;){
-  	 	// System.out.println(c.genRandom("verse", 8) + "\n\n");
+    try{
+     c = new CFG(cfg);
+    }catch(Exception e){ e. printStackTrace(); }
+     c.printGrammar();
+     for(;;){
+        // System.out.println(c.genRandom("verse", 8) + "\n\n");
        String p = poem.generate();
        String mode = modes[rnd.nextInt(modes.length)];
        for(String s: p.split("\n")){
@@ -87,8 +87,8 @@ public class dummy2{
          // System.out.println(c.genRandom(mode,8));
          System.out.println(s);
        }
-  	 	if(!io.input().isEmpty()) break;
-  	 }
+        if(!io.input().isEmpty()) break;
+     }
   }
  }
 }

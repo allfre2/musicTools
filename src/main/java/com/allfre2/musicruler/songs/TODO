@@ -10,5 +10,5 @@ Make a Song class, it will Take a Lyrics implementation, a Harmonizer (f u whate
 and given the Lyrics generated it will pass them to the harmonizer and it will
 use a CFG to generate a chord pattern that the Key class will the use to
 generate a sequence of chords following that grammar
-implements several lyrics classes (poems and other), several harmony types according to a 
+implements several lyrics classes (poems and other), several harmony types according to a
 context free grammar and make use key classes to create the chords

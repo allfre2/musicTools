@@ -12,7 +12,7 @@ import java.util.TreeSet;
  * and enables a polimorphic way of treating all of them.
  */
 public abstract class NoteCollection{
-    
+
  protected List<NoteI> notes;
 
  /**
@@ -34,7 +34,7 @@ public abstract class NoteCollection{
  public int hashCode(){
   return this.toString().hashCode();
  }
- 
+
  @Override
  public boolean equals(Object o){
   return this.notes.equals(((NoteCollection)o).getNotes());
@@ -42,7 +42,7 @@ public abstract class NoteCollection{
 
  @Override
  public String toString(){
- 	return notes.toString();
+    return notes.toString();
  }
 
  /**
@@ -50,6 +50,6 @@ public abstract class NoteCollection{
  * a descriptive name of the {@link Chord}, {@link Scale}, etc ...
  */
  public String name(){
- 	return notes.get(0) + NoteCollectionFactory.getSymbol(this);
+    return notes.get(0) + NoteCollectionFactory.getSymbol(this);
  }
 }

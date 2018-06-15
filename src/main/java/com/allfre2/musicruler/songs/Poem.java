@@ -40,7 +40,7 @@ public abstract class Poem implements Lyrics{
     public String getCfg(){
         return cfg;
     }
-    
+
     public void setCfg(String cfg){
         this.cfg = cfg;
     }
@@ -54,34 +54,34 @@ public abstract class Poem implements Lyrics{
     public int getLineWidth(){
         return lineWidth;
     }
-    
+
     public void setLineWidth(int lineWidth){
         this.lineWidth = lineWidth;
     }
-    
-	protected DataSource data;
 
-	public void setDataSource(DataSource dataSource){
-		data = dataSource;
-	}
+    protected DataSource data;
 
-	public DataSource getDataSource(){
-		return data;
-	}
+    public void setDataSource(DataSource dataSource){
+        data = dataSource;
+    }
+
+    public DataSource getDataSource(){
+        return data;
+    }
 
     protected int maxRhymeDistance;
 
     public int getMaxRhymeDistance(){
-    	return maxRhymeDistance;
+        return maxRhymeDistance;
     }
- 
+
     public void setMaxRhymeDistance(int distance){
-    	this.maxRhymeDistance = distance;
+        this.maxRhymeDistance = distance;
     }
 
     protected HashMap< Token<String>, List<Token<String>> > rhymeTable;
- 
-	public void buildRhymeTable(){
+
+    public void buildRhymeTable(){
 
 List<Token<String>> tokens = generator.tokens();
 System.out.println("building rhyme table");
@@ -89,7 +89,7 @@ System.out.println("building rhyme table");
 // System.out.println("\n\n " + tokens.size()*tokens.size() + " Comparisons need to be performed.");
 // io.input();
 
-	 rhymeTable = new HashMap<>();
+     rhymeTable = new HashMap<>();
 
      for(Token<String> token: tokens){
 
@@ -98,14 +98,14 @@ System.out.println("building rhyme table");
 
       for(Token<String> adjToken: tokens){
 
-      	if(Soundex.distance(token.get(), adjToken.get()) < maxRhymeDistance){
+        if(Soundex.distance(token.get(), adjToken.get()) < maxRhymeDistance){
 // System.out.println("Comparing with soundex " + token.get() + " and " + adjToken.get());
 // System.out.println("result = " + Soundex.distance(token.get(), adjToken.get()));
 // io.input();
           List<Token<String>> rhymes = rhymeTable.get(token);
           rhymes.add(new Token<String>(adjToken));
 
-      	}
+        }
       }
      }
 
@@ -122,7 +122,7 @@ System.out.println("building rhyme table");
 //         System.out.println("key: " + t + " " + rhymeTable.get(t) );
 //         io.input();
 //      }
-	}
+    }
 
     public String generate(){
 

@@ -4,7 +4,7 @@ Debug the parser, check that the syntax tree is correct
  - nested parentesis
  - Empty operator
  - Add some regular expresion functionality? ...
- - 
+ -
 Make the genRandom methods better
 Provide better error messages in InvalidCFGException class
 

@@ -125,7 +125,7 @@ public class NoteCollectionFactory{
     public static List<Scale> getAllModes(NoteI root){
      List<Scale> modalScales = new ArrayList<>();
      for (Class c: modes) {
-        modalScales.add(makeScale(c, root)); 
+        modalScales.add(makeScale(c, root));
      }
      return modalScales;
     }

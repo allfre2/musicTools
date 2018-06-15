@@ -6,7 +6,7 @@ package com.allfre2.musicruler.songs;
  * @see Markov
  */
 public class Token<T> implements Comparable<Token<T>>{
-    
+
   T value;
   protected int count;
   protected double probability;
@@ -16,7 +16,7 @@ public class Token<T> implements Comparable<Token<T>>{
   * @param value Contains a T object that is intended to be wrapped as a Token.
   */
   public Token(T value){
-  	this(value, 1);
+    this(value, 1);
   }
 
  /**
@@ -26,7 +26,7 @@ public class Token<T> implements Comparable<Token<T>>{
   */
   public Token(T value, int count){
    this.value = value;
-   this.count = count; 
+   this.count = count;
    this.probability = 0.0;
   }
 
@@ -45,7 +45,7 @@ public class Token<T> implements Comparable<Token<T>>{
   * @return Returns the T value contained by the Token.
   */
   public T get(){
-  	return value;
+    return value;
   }
 
  /**
@@ -77,15 +77,15 @@ public class Token<T> implements Comparable<Token<T>>{
   * @param newCount the new count to be asigned to the count field.
   */
   public void setCount(int newCount){
-  	this.count = newCount;
+    this.count = newCount;
   }
 
   public double getP(){
-  	return probability;
+    return probability;
   }
 
   public void setP(double p){
-  	probability = p;
+    probability = p;
   }
 
   @Override
@@ -107,10 +107,10 @@ public class Token<T> implements Comparable<Token<T>>{
 
   @Override
   public String toString(){
-  	return "" + value + " (" + count + "/" + probability + ")";
+    return "" + value + " (" + count + "/" + probability + ")";
   }
 
   public String simpleString(){
-  	return value+ "";
+    return value+ "";
   }
 }

@@ -23,16 +23,16 @@ import javax.swing.text.html.parser.ParserDelegator;
  * @see DataSource
  */
 public class URLDataSource extends DataSource{
-    
+
    /**
     * Class Constructor.
     * Initializes the tokens field by fetching the data from the URL
     * and passing it to the {@link URLDataSource#getData} method.
     * @param url The String of the url to be downloaded.
     */
-	public URLDataSource (String url){
-	 tokenize(getData(url));
-	}
+    public URLDataSource (String url){
+     tokenize(getData(url));
+    }
 
     // TODO parse HTML, Json and others
     // For now just plain text
@@ -41,26 +41,26 @@ public class URLDataSource extends DataSource{
     * and calling the openStream method.
     * @param url The String of the url to be downloaded.
     */
-	protected String getData(String url){
+    protected String getData(String url){
 
-	 String data = "";
+     String data = "";
      try{
-      
+
        data = readLines(
          new BufferedReader(
          new InputStreamReader(
          new URL(url).openStream())));
 
      }catch(MalformedURLException e){
-     	e.printStackTrace();
+        e.printStackTrace();
      }catch(IOException e){
-     	e.printStackTrace();
+        e.printStackTrace();
      }
 
      //Check to se if it is html
      // if it is get the p tags
      return data;
-	}
+    }
 
   // Pending
   private String getPtags(String data) throws IOException{
