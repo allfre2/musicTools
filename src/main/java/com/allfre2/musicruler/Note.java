@@ -47,21 +47,21 @@ public class Note implements NoteI{
  }
 
  /**
- * @see {@link NoteI}
+ * @see NoteI#getNoteIndex
  */
  public int getNoteIndex(){
   return this.noteIndex;
  }
 
  /**
- * @see {@link NoteI}
+ * @see NoteI#getAltIndex
  */
  public int getAltIndex(){
   return this.altIndex;
  }
 
  /**
- * @see {@link NoteI}
+ * @see NoteI#Overtones
  */
  public List<NoteI> Overtones(){
    List<NoteI> overtones = new ArrayList<NoteI>();
@@ -78,7 +78,7 @@ public class Note implements NoteI{
  }
 
  /**
- * @see {@link NoteI}
+ * @see NoteI#semitones
  */
  public int semitones(NoteI note){
   int dist = distance(note.getNoteIndex());
@@ -88,26 +88,38 @@ public class Note implements NoteI{
  }
 
  /**
- * @see {@link NoteI}
+ * @see NoteI#isEnharmonic
  */
  public boolean isEnharmonic(NoteI note){
   int semitones = semitones(note);
   return semitones == 0;
  }
 
- // Add augmented, minor, and diminished 1ths ... :/
+// TODO: Add augmented, minor, and diminished 1ths ... :/
+/**
+ * @param interval The interval to be created
+ * @return NoteI a augmented `interval' above this note
+ */
  public NoteI aug(int interval){
   interval = (interval < 1 ? 1 : interval);
   int distance = semitones[ (interval -1)%Notes.length ] + 1;
   return makeNote(interval, distance);
  }
 
+/**
+ * @param interval The interval to be created
+ * @return NoteI a major `interval' above this note
+ */
  public NoteI major(int interval){
   interval = (interval < 1 ? 1 : interval);
   int distance = semitones[ (interval -1)%Notes.length ];
   return makeNote(interval, distance);
  }
 
+/**
+ * @param interval The interval to be created
+ * @return NoteI a minor `interval' above this note
+ */
  public NoteI minor(int interval){
   int i = interval %8;
   if(i < 2 || i == 4 || i == 5)
@@ -117,6 +129,10 @@ public class Note implements NoteI{
   return makeNote(interval, distance);
  }
 
+/**
+ * @param interval The interval to be created
+ * @return NoteI a diminished `interval' above this note
+ */
  public NoteI dim(int interval){
   interval = (interval < 1 ? 1 : interval);
   int distance = semitones[ (interval -1)%Notes.length ] -2;
@@ -126,6 +142,10 @@ public class Note implements NoteI{
   return makeNote(interval, distance);
  }
 
+/**
+ * @param interval The interval to be created
+ * @return NoteI a just `interval' above this note
+ */
  public NoteI just(int interval){
   return major(interval);
  }
@@ -139,8 +159,8 @@ public class Note implements NoteI{
   this.upperCase = value;
  }
 
- // Helper functions
  /**
+ * Static method to create randomly generated notes
  * @return returns a randomly generated <code>NoteI</code>.
  */
  public static NoteI random(){
@@ -150,8 +170,7 @@ public class Note implements NoteI{
 
   return new Note(Notes[note] + Symbols.modifiers[alt][1]);
  }
- // Returns the number of semitones between the current note and the
- // new one before applying alterations
+
  private int distance(int newNoteIndex){
     int dist;
     if(newNoteIndex < noteIndex){

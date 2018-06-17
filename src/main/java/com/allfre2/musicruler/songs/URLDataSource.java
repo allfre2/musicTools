@@ -40,6 +40,7 @@ public class URLDataSource extends DataSource{
     * Downloads the url by passing it to the URL classes constructor
     * and calling the openStream method.
     * @param url The String of the url to be downloaded.
+    * @return The String containing all the data downloaded from the url.
     */
     protected String getData(String url){
 

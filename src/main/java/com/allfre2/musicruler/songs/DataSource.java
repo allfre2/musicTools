@@ -8,7 +8,7 @@ import java.io.IOException;
 
 /**
  * Provides an interface to the source of the text used by
- * {@link Markov<T>} to generate tables.
+ * {@link Markov} to generate tables.
  */
 public abstract class DataSource{
 
@@ -34,7 +34,8 @@ public abstract class DataSource{
  }
 
 /**
- * @return Returns a List {@link Token<String>} containing the tokens
+ * Get the tokens extracted from the source.
+ * @return Returns a List {@link Token} containing the tokens
  * extracted from the data String by {@link DataSource#tokenize}.
  */
  public List<Token<String>> getTokens(){
@@ -45,6 +46,7 @@ public abstract class DataSource{
  * Method to read all lines of a surce into a single String.
  * @return Returns lines read from a file or url or any BufferedReader
  * as a single String.
+ * @throws IOException IOException
  */
  public static String readLines(BufferedReader br)
   throws IOException{

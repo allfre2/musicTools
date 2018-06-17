@@ -22,7 +22,7 @@ public class Token<T> implements Comparable<Token<T>>{
  /**
   * Class Constructor.
   * @param value Contains a T object that is intended to be wrapped as a Token.
-  * @param count Integer with the number of Token<T> with the same value.
+  * @param count Integer with the number of Token with the same value.
   */
   public Token(T value, int count){
    this.value = value;
@@ -32,7 +32,7 @@ public class Token<T> implements Comparable<Token<T>>{
 
  /**
   * Copy Constructor.
-  * @param token A Token<T> that is going to be copied.
+  * @param token A Token that is going to be copied.
   */
   public Token(Token<T> token){
    this.value = token.get();

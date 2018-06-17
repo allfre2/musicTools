@@ -13,8 +13,9 @@ import java.util.Random;
  * <p>
  *  It has or (|), asingment (=), parentesis and semicolon operators
  * for writting CFGs.
- * It is intended to be used with {@link Markov<T>} to generate
- * text for certain types of poem and with {@link AbstractKey} implementations
+ * It is intended to be used with {@link Markov} to generate
+ * text for certain types of poem and with
+ * {@link com.allfre2.musicruler.AbstractKey} implementations
  * to generate harmony for songs.
  */
 public class CFG{
@@ -39,7 +40,8 @@ public class CFG{
   * Class Constructor
   * @param cfg specifies a context free grammar according to the syntax
   * defined above.
-  * @throws InvalidCFGException
+  * @throws InvalidCFGException Indicates a grammar that is not syntacticaly
+  * or semanticaly correct.
   * @see InvalidCFGException
   */
   public CFG(String cfg) throws InvalidCFGException{
@@ -80,7 +82,8 @@ public class CFG{
     * faulty or expressions and foreign tokens.
     * @param  productions a List of Lists of Strings containing the tokens
     * extrated with the lexer method.
-    * @throws InvalidCFGException
+    * @throws InvalidCFGException Indicates a grammar that is not syntacticaly
+    * or semanticaly correct.
     */
     public void validate(List<List<String>> productions)
      throws InvalidCFGException
@@ -277,7 +280,8 @@ public class CFG{
       * Class Contructor.
       * Calls the {@link Node#parse} method to build the parse tree for each production.
       * @param  production A List of String (tokens) that make a production.
-      * @throws InvalidCFGException
+      * @throws InvalidCFGException Indicates a grammar that is not syntacticaly
+      * or semanticaly correct.
       */
       public Node(List<String> production) throws InvalidCFGException{
          this.type = Production;
