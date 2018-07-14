@@ -3,5 +3,6 @@
 !*/
 !src/**
 !pom.xml
+!build.gradle
 !README.md
 !LICENSE
